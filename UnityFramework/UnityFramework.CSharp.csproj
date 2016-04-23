@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BA7DEA5-895D-FDE6-ABF4-4ECC87142F02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.3.3f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_3;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_3;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Framework\GameDataManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Action\ActionBase.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Action\ActionFactory.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Action\ActionParam.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Action\AsynAction.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Action\LogicAction.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Action\NetAction.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\ActionBase.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\ActionParam.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Logic\GameModuleBase.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Logic\GameModuleManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Logic\SPSHandle.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Logic\SPSStageBase.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Logic\StageManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\NetAction.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\DefaultHeadFormater.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\HttpPackage.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\IHeadFormater.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\NetPackage.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\NetReader.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\NetWriterHttp.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\NetWriterTcp.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\PackageHead.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\SPSCmdParser.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\SPSHttpServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\SPSNetEventArgs.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\SPSServerBase.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\SPSTcpServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\Network\ServerManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Base\ViewAction.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigCharData.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigMonster.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigMonsterDynAttr.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigMonsterStaticAttr.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigPlayerAttr.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigSkillAll.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigSkillEffect.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigSkillLevelUp.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\ConfigData\ConfigSkillState.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\GMCommand.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyItemBag.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyItemBank.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyItemData.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyItemManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyItemModule.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyItemObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Item\MyPlayerEquip.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\LocalData\ChosenSkillData.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\LocalData\LocalDataToC.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\LocalData\mSkillDynamicArgWithIcon.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\LocalData\mSkillDynamicArgsBase.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Monster\MonsterAttack.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\Monster\MonsterMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayerFight.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayerMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayerSkill.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayerSkillDBManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayerSkillEffectLogic.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\MyPlayerSkillSingLogic.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\OtherPlayerMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\PlayerAttack.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\PlayerSkillEffectLogic.cs" />
+    <Compile Include="Assets\Framework\GameLogic\GameModule\player\PlayerSkillSingLogic.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Local.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActionDefine.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ButtonEvent.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ChangeEquip.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ChangeFloor.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ChangeMapResult.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ChangeScene.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ChangeStageResult.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_CreateChar.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_DeleteChar.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_EnterGame.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_GMCommand.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_GetBagEquip.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_GetBagTabItemInfo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_GetEquipInfoList.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_GetItemDetailInfo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_GetItemInfoList.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_HitSprite.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ItemResort.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_LearnSkill.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_LoginServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_MoveTo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ReturnToLogin.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_ShowPlayerAttr.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_StopMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_UseItem.cs" />
+    <Compile Include="Assets\Framework\GameLogic\LogicActions\LogicAction_UseSkill.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_BeginSingSkill.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_ChangeEquip.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_ChangeFloor.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_ChangeMap.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_EquipInfo_List.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_GetBagEquipInfo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_ItemInfo_List.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_ItemResort.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_LeaveBattle.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_LoadSceneFinish.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_MoveTo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_NearbyMonster.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_NearbyPlayer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_PlayerSingleAttack.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_StopMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CS_UseItem.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_CharList.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_Create_Character.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_Create_Character_Over.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_Delete_Character.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_Enter_Game.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_Login_Game.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_NotifyError.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_EnterGame.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_GetNewEquip.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_GetNewItem.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_LoadSceneBegin.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterDead.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterInfo_List.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterNewPos.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterOut.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterSingleAttack.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MonsterStopMove.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MyPlayerAttr.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MyPlayerInfo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MyPlayerStatus.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_MySingleAttack.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_OtherPlayerInfo.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_OtherPlayerStatus.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_PlayerAttrSingle.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_PlayerDead.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_PlayerOut.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_PlayerPos.cs" />
+    <Compile Include="Assets\Framework\GameLogic\NetActions\CMD_SC_SkillInfo_List.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\HurtObjFactory.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\MonsterFactory.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\PlayerFactory.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\GameScene.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\Data\FacilityData.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\Data\GroundItemData.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\Data\NpcData.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\FacilityObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\GroundItemObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\HurtObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\LiveSprite.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\MonsterObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\NpcObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\FacilityManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\GroundItemManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\HurtObjManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\MonsterManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\NpcManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\PlayerManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\ObjManager\SfxObjManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\PlayerObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\SceneObject.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\ObjInScene\SfxObj.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\Scene\SceneManager.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Object\SfxObjFactory.cs" />
+    <Compile Include="Assets\Framework\GameLogic\SPSFramework.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Server\BuyServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Server\GameServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Server\LineInfoServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Server\LoginServer.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Stage\StageAppUpdate.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Stage\StageGame.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Stage\StageLogin.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Stage\StageRoleManage.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Stage\StageSelectLine.cs" />
+    <Compile Include="Assets\Framework\GameLogic\Stage\StageStartup.cs" />
+    <Compile Include="Assets\Framework\GameLogic\UnityActionDefine.cs" />
+    <Compile Include="Assets\Framework\Tools\Assert.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\AesHelper.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\CRC32.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\CircleBuffer.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\DataHelper.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\MD5.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\MD5Helper.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\MD5Managed.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\MD5Utils.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\RC4Helper.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\SHA1Helper.cs" />
+    <Compile Include="Assets\Framework\Tools\Data\StringEncrypt.cs" />
+    <Compile Include="Assets\Framework\Tools\DataUnit.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\CSVMod.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\DataUnit.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\MathMod.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\Singleton.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\StringMod.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\Threader.cs" />
+    <Compile Include="Assets\Framework\Tools\Mod\XMLMod.cs" />
+    <Compile Include="Assets\Framework\Tools\Random.cs" />
+    <Compile Include="Assets\Framework\Tools\RandomName.cs" />
+    <Compile Include="Assets\Framework\Tools\Reflect\FastActivator.cs" />
+    <Compile Include="Assets\Framework\Tools\Reflect\MemberSet.cs" />
+    <Compile Include="Assets\Scripts\AppMain.cs" />
+    <Compile Include="Assets\Scripts\LogicMain.cs" />
+    <Compile Include="Assets\Scripts\UI\BackPack\ItemData.cs" />
+    <Compile Include="Assets\Scripts\UI\BackPack\ItemManager.cs" />
+    <Compile Include="Assets\Scripts\UI\BackPack\PackDefine.cs" />
+    <Compile Include="Assets\Scripts\UI\BackPack\UIItemView.cs" />
+    <Compile Include="Assets\Scripts\UI\Base\UIObject.cs" />
+    <Compile Include="Assets\Scripts\UI\Base\UIWndBase.cs" />
+    <Compile Include="Assets\Scripts\UI\HudUI\UIHudCharInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\HudUI\UIHudHarm.cs" />
+    <Compile Include="Assets\Scripts\UI\HudUI\UIHudMonsterInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\HudUI\UIHudNPCInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\JoyStick\MovingStick.cs" />
+    <Compile Include="Assets\Scripts\UI\JoyStick\UIJoyStick.cs" />
+    <Compile Include="Assets\Scripts\UI\MsgBox\UIMessageBox.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\DragSkillSprite.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\RemoveShortSkill.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIEquipSuspension.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UILoading.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UILogin.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWaiting.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndBackPack.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndCharDetial.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndCreateRole.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndEquipShow.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndEquipmentPlay.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndFashion.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndFlag.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndGaming.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndLock.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndLogin.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndMessageBox.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndRoleFrame.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndSelectLevel.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndSelectLine.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndSelectRole.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndSkill.cs" />
+    <Compile Include="Assets\Scripts\UI\Window\UIWndTowerScene.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\ALLEvents.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\AllDefines.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\Allenums.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\Config.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\Console.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\Coroutiner.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\NotDestroy.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\PathMod.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\Timers.cs" />
+    <Compile Include="Assets\Scripts\Unity\Common\U3DMod.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\C2DInfo.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CAnimator.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CCameraPathController.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CEffect.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CModel.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CModelRender.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CPreviewAnimator.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\CPreviewModel.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\MonsterLoader.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\SwiperControler.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\U3DComponent.cs" />
+    <Compile Include="Assets\Scripts\Unity\Component\U3DObject.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\AssetBundleManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\DataManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\EffectManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\ObjectManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\RenderManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\ResourceManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\SceneManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\StageManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Unity\Module\GameStage.cs" />
+    <Compile Include="Assets\Scripts\Unity\Module\RoleStage.cs" />
+    <Compile Include="Assets\Scripts\Unity\Module\StageBase.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GCreature.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GCreatureBullet.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GCreatureCross.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GCreatureHang.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GCreaturePoint.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GGhost.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GMonster.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GNPC.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GObject.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GObjectBase.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GOtherPlayer.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GPlayer.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\GSprite.cs" />
+    <Compile Include="Assets\Scripts\Unity\Object\IObject.cs" />
+    <Compile Include="Assets\Scripts\Unity\SceneCode\LoadShaderAgain.cs" />
+    <Compile Include="Assets\Scripts\Unity\Static\Logicer.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ActSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ActionFinish.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_BackPackInfo.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ButtonEvent.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ChangeStage.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ControlPlayer.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ControlSpriteHud.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_DeleteChar.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_GetSpritePosition.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_HurtSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ItemInfo.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_KillCreature.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_KillSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_LoadCreature.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_LoadScene.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_LoadSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_LocatSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_MoveSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_RecvChosenOneSkill.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_RecvChosenSkill.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_RecvLearnSkill.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_RecvLevelUp.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_RecvLiveOrDead.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_RecvStudySkill.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_SendChar.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_SendLineState.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_SetSpriteInfo.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ShowMsg.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ShowPlayerChooseEquip.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ShowPlayerEquip.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ShowRoleProperty.cs" />
+    <Compile Include="Assets\Scripts\UnityActions\UnityAction_ShowSprite.cs" />
+    <Compile Include="Assets\Scripts\UnityMain.cs" />
+    <Compile Include="Assets\Unity\DebugMod.cs" />
+    <Compile Include="Assets\Unity\ExMonoBehaviour.cs" />
+    <Compile Include="Assets\src\CmdProtocol.cs" />
+    <Compile Include="Assets\src\Data\CS\EquipInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\ItemInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\ItemLocationChange.cs" />
+    <Compile Include="Assets\src\Data\CS\MonsterInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\MonsterStatus.cs" />
+    <Compile Include="Assets\src\Data\CS\MovePoint.cs" />
+    <Compile Include="Assets\src\Data\CS\MyPlayerAttr.cs" />
+    <Compile Include="Assets\src\Data\CS\MyPlayerInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\MyPlayerStatus.cs" />
+    <Compile Include="Assets\src\Data\CS\NearbyMonster.cs" />
+    <Compile Include="Assets\src\Data\CS\NearbyPlayer.cs" />
+    <Compile Include="Assets\src\Data\CS\NetDataPlayerBase.cs" />
+    <Compile Include="Assets\src\Data\CS\OtherPlayerAttr.cs" />
+    <Compile Include="Assets\src\Data\CS\OtherPlayerInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\OtherPlayerStatus.cs" />
+    <Compile Include="Assets\src\Data\CS\PlayerAttrSingle.cs" />
+    <Compile Include="Assets\src\Data\CS\SceneInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\SingleAttackParam.cs" />
+    <Compile Include="Assets\src\Data\CS\SkillInfo.cs" />
+    <Compile Include="Assets\src\Data\CS\SvrLineInfo.cs" />
+    <Compile Include="Assets\src\Data\DataVersion.cs" />
+    <Compile Include="Assets\src\Data\MyPlayerAttrTotal.cs" />
+    <Compile Include="Assets\src\Data\NetDataAttribute.cs" />
+    <Compile Include="Assets\src\Data\NetDataPlayerBase.cs" />
+    <Compile Include="Assets\src\Data\NetDataPlayerBase_Svr.cs" />
+    <Compile Include="Assets\src\Data\PlayerAttrSingle.cs" />
+    <Compile Include="Assets\src\Data\ReqPlayerData.cs" />
+    <Compile Include="Assets\src\Data\SS\DataVersion.cs" />
+    <Compile Include="Assets\src\Data\SS\NDPlayerEquip.cs" />
+    <Compile Include="Assets\src\Data\SS\NDPlayerInfo.cs" />
+    <Compile Include="Assets\src\Data\SS\NDPlayerItem.cs" />
+    <Compile Include="Assets\src\Data\SS\NDPlayerSkill.cs" />
+    <Compile Include="Assets\src\Data\SS\ReqPlayerData.cs" />
+    <Compile Include="Assets\src\GameDefine.cs" />
+    <Compile Include="Assets\src\TcpCommon.cs" />
+    <Compile Include="Assets\src\TickElapse.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
+</Project>
