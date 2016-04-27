@@ -1,0 +1,3 @@
+[submodule "UnityFramework/Assets/skynet-client"]
+	path = UnityFramework/Assets/skynet-client
+	url = https://github.com/yuisunn/skynet-client.git
