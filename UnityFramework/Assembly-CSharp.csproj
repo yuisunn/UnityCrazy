@@ -192,6 +192,7 @@
      <Compile Include="Assets\SLCGame\Action\AsynAction.cs" />
      <Compile Include="Assets\SLCGame\Action\LogicAction.cs" />
      <Compile Include="Assets\SLCGame\Action\NetAction.cs" />
+     <Compile Include="Assets\SLCGame\AppMain.cs" />
      <Compile Include="Assets\SLCGame\Common\ALLEvents.cs" />
      <Compile Include="Assets\SLCGame\Common\ActionFactory.cs" />
      <Compile Include="Assets\SLCGame\Common\AllDefines.cs" />
