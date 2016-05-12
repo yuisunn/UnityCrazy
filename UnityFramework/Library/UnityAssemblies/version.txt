@@ -1,6 +1,20 @@
-5.3.3f1:2.2.0.0
+5.1.1f1:2.2.0.0
 StandaloneWindows
-D:/Program Files/Editor/Data/Managed/UnityEngine.dll
-D:/Program Files/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
-D:/Program Files/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-D:/Program Files/Editor/Data/Managed/UnityEditor.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/Managed/UnityEngine.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/Managed/UnityEditor.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\androidplayer/UnityEditor.Android.Extensions.dll
+D:/ProgramData/Unity5/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\wp8support/UnityEditor.WP8.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\metrosupport/UnityEditor.Metro.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\blackberryplayer/UnityEditor.BB10.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\webglsupport/UnityEditor.WebGL.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\linuxstandalonesupport/UnityEditor.LinuxStandalone.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
+D:\ProgramData\Unity5\Unity\Editor\Data\PlaybackEngines\macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll

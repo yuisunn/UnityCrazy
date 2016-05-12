@@ -9,136 +9,140 @@ using SLCGame.Unity;
 using SLCGame;
 using SLCGame.Tools;
 
-public class GameMain : UnitySingleton<GameMain> {
-
-    private static Threader _frmworkThreader = new Threader();
-    private static bool _appExit = false;
-    private Queue<LogicAction> m_queueLogicAction = new Queue<LogicAction>();
-
-
-    public void Awake()
-    {
-       
-    }
-
-    public void OnApplicationPause()
+namespace SLCGame
+{
+    public class GameMain : UnitySingleton<GameMain>
     {
 
-    }
-    public void OnApplicationFocus()
-    { 
+        private static Threader _frmworkThreader = new Threader();
+        private static bool _appExit = false;
+        private Queue<LogicAction> m_queueLogicAction = new Queue<LogicAction>();
 
-    }
 
-    public void Init()
-    {
-        try
-        { 
-            //创建逻辑线程
-            DebugMod.Log("GameMain Init");
-            //Thread t = new Thread(new ParameterizedThreadStart(ThreadProc));
-            //t.Start(this);
-            //Thread.Sleep(0);
-            NetActionFactory.Instance.ActionAssembly = System.Reflection.Assembly.GetCallingAssembly();  
-        }
-        catch (Exception ex)
+        public void Awake()
         {
-            DebugMod.LogException(ex);
-        }
-    }
 
-    public void OnThreadUpdate()
-    {
-        try
-        {
-            DequueLogicAction();
-            _frmworkThreader.Update();
         }
-        catch (Exception ex)
-        {
-            DebugMod.LogException(ex);
-        }
-    }
-    public static void ThreadProc(object param)
-    {
-        try
-        {
-            DebugMod.Log("Logic Thread Start.");
 
-            GameMain frame = param as GameMain;
-            long prevTick = DateTime.Now.Ticks;
-            if (null != param)
+        public void OnApplicationPause()
+        {
+
+        }
+        public void OnApplicationFocus()
+        {
+
+        }
+
+        public void Init()
+        {
+            try
             {
-                while (!_appExit)
+                //创建逻辑线程
+                DebugMod.Log("GameMain Init");
+                //Thread t = new Thread(new ParameterizedThreadStart(ThreadProc));
+                //t.Start(this);
+                //Thread.Sleep(0);
+                NetActionFactory.Instance.ActionAssembly = System.Reflection.Assembly.GetCallingAssembly();
+            }
+            catch (Exception ex)
+            {
+                DebugMod.LogException(ex);
+            }
+        }
+
+        public void OnThreadUpdate()
+        {
+            try
+            {
+                DequueLogicAction();
+                _frmworkThreader.Update();
+            }
+            catch (Exception ex)
+            {
+                DebugMod.LogException(ex);
+            }
+        }
+        public static void ThreadProc(object param)
+        {
+            try
+            {
+                DebugMod.Log("Logic Thread Start.");
+
+                GameMain frame = param as GameMain;
+                long prevTick = DateTime.Now.Ticks;
+                if (null != param)
                 {
-                    long nowTick = DateTime.Now.Ticks;
-                    long elapseTick = nowTick - prevTick;
-                    if (elapseTick > 333333)        //33ms
+                    while (!_appExit)
                     {
-                        prevTick = nowTick;
-                        frame.OnThreadUpdate();
+                        long nowTick = DateTime.Now.Ticks;
+                        long elapseTick = nowTick - prevTick;
+                        if (elapseTick > 333333)        //33ms
+                        {
+                            prevTick = nowTick;
+                            frame.OnThreadUpdate();
+                        }
                     }
                 }
+
+                DebugMod.Log("Logic Thread Exit.");
             }
-
-            DebugMod.Log("Logic Thread Exit.");
-        }
-        catch (Exception ex)
-        {
-            DebugMod.LogException(ex);
-        }
-    }
-
-    public void Update()
-    {
-        DequueLogicAction();
-    }
-
-
-    public bool CallLogicAction(ActionDefine actionType, ActionParam param)
-    {
-        try
-        {
-            LogicAction action = (LogicAction)LogicActionFactory.Instance.CreateAction(actionType);
-            if (null == action)
-                return false;
-            action.ActionId = (int)actionType;
-            action.ActParam = param;
-
-            lock (m_queueLogicAction)
+            catch (Exception ex)
             {
-                m_queueLogicAction.Enqueue(action);
+                DebugMod.LogException(ex);
             }
-            return true;
         }
-        catch (Exception ex)
-        {
-            DebugMod.LogException(ex);
-            return false;
-        }
-    }
 
-    private void DequueLogicAction()
-    {
-        try
+        public void Update()
         {
-            LogicAction action = null;
-            do
+            DequueLogicAction();
+        }
+
+
+        public bool CallLogicAction(ActionDefine actionType, ActionParam param)
+        {
+            try
             {
-                action = null;
+                LogicAction action = (LogicAction)LogicActionFactory.Instance.CreateAction(actionType);
+                if (null == action)
+                    return false;
+                action.ActionId = (int)actionType;
+                action.ActParam = param;
+
                 lock (m_queueLogicAction)
                 {
-                    if (0 < m_queueLogicAction.Count)
-                        action = m_queueLogicAction.Dequeue();//移除并返回栈顶数据
+                    m_queueLogicAction.Enqueue(action);
                 }
-                if (null != action)
-                    action.ProcessAction();
-            } while (action != null);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                DebugMod.LogException(ex);
+                return false;
+            }
         }
-        catch (Exception ex)
+
+        private void DequueLogicAction()
         {
-            DebugMod.LogException(ex);
+            try
+            {
+                LogicAction action = null;
+                do
+                {
+                    action = null;
+                    lock (m_queueLogicAction)
+                    {
+                        if (0 < m_queueLogicAction.Count)
+                            action = m_queueLogicAction.Dequeue();//移除并返回栈顶数据
+                    }
+                    if (null != action)
+                        action.ProcessAction();
+                } while (action != null);
+            }
+            catch (Exception ex)
+            {
+                DebugMod.LogException(ex);
+            }
         }
+
     }
-     
 }

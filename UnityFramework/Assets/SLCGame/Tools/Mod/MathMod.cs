@@ -1,11 +1,31 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using UnityEngine; 
+using System;
 
 namespace SLCGame.Tools
 {
     public class MathMod
     {
-     
+
+        public static double mod(double num, double divider)
+        {
+            if (divider == 0)
+            {
+                throw new DivideByZeroException();
+            }
+
+            return num - Math.Floor(num / divider) * divider;
+        }
+
+        public static void mod2(double num, double divider, out double quotient, out double remainder)
+        {
+            if (divider == 0)
+            {
+                throw new DivideByZeroException();
+            }
+
+            quotient = Math.Floor(num / divider);
+            remainder = num - quotient * divider;
+        }
         public static int Min(int p1, int p2)
         {
             return p1 <= p2 ? p1 : p2;

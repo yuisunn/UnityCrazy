@@ -1,53 +1,385 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
-    <ProjectGuid>{DCFED8F0-6629-342C-F168-80F3F237EB2A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <BaseDirectory>Assets</BaseDirectory>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{DCFED8F0-6629-342C-F168-80F3F237EB2A}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_3;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_1_1;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+	<Reference Include="System" />
     <Reference Include="System.XML" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="UnityEngine">
-      <HintPath>D:/Program Files/Editor/Data/Managed/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>D:/Program Files/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>D:/ProgramData/Unity5/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>D:/ProgramData/Unity5/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Game\ActionDefine.cs" />
      <Compile Include="Assets\Game\GameAction\ActionArenaList.cs" />
      <Compile Include="Assets\Game\GameAction\ActionArenaListRefresh.cs" />
+     <Compile Include="Assets\Laser.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Serialization\1-BasicSerialization\JNSimpleObjectSample.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Serialization\2-Polymorphism\JNPolymorphismSample.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Serialization\3-BSON\JNBsonSample.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Serialization\999-ExampleModels\JNExampleModels.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\JsonTestScript.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\TestCaseUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\TestModels\SampleBase.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\TestModels\SampleChild.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\TestModels\SampleObject.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\TestModels\SimpleClassObject.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Examples\Tests\TextTest.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Extras\CustomConverters\Matrix4x4Converter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Extras\CustomConverters\Vector2Converter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Extras\CustomConverters\Vector3Converter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Extras\CustomConverters\Vector4Converter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Aot\EnumerationExtension.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonBinaryType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonBinaryWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonObjectId.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonToken.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Bson\BsonWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ConstructorHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\BsonObjectIdConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\CustomCreationConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\DateTimeConverterBase.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\IsoDateTimeConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\JavaScriptDateTimeConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\JsonDateTimeSerializationMode.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\KeyValuePairConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\RegexConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\StringEnumConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Converters\XmlNodeConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\DefaultValueHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\IJsonLineInfo.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonArrayAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonConstructorAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonContainerAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonConvert.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonConverterAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonConverterCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonIgnoreAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonObjectAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonPropertyAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonReaderException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonSerializationException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonSerializer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonSerializerSettings.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonTextReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonTextWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonToken.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonValidatingReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\JsonWriterException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\IJEnumerable.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JArray.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JConstructor.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JContainer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JEnumerable.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JObject.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JPath.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JProperty.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JPropertyDescriptor.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JRaw.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JToken.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JTokenEqualityComparer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JTokenReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JTokenType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JTokenWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\JValue.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Linq\LinqExtensions.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\MemberSerialization.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\MissingMemberHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\NullValueHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObjectCreationHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\AddingNewEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\AddingNewEventHandler.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\INotifyCollectionChanged.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\INotifyPropertyChanging.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\NotifyCollectionChangedAction.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\NotifyCollectionChangedEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\NotifyCollectionChangedEventHandler.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\PropertyChangingEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ObservableSupport\PropertyChangingEventHandler.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\PreserveReferencesHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\ReferenceLoopHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Required.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchema.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaBuilder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaConstants.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaGenerator.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaModel.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaModelBuilder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaNode.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaNodeCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\JsonSchemaWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\SchemaExtensions.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\UndefinedSchemaIdHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\ValidationEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Schema\ValidationEventHandler.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\CachedAttributeGetter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\CamelCasePropertyNamesContractResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\DefaultContractResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\DefaultReferenceResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\DefaultSerializationBinder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\DynamicValueProvider.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\ErrorContext.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\ErrorEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\IContractResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\IReferenceResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\IValueProvider.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonArrayContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonDictionaryContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonFormatterConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonISerializableContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonLinqContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonObjectContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonPrimitiveContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonProperty.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonPropertyCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonSerializerInternalBase.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonSerializerInternalReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonSerializerInternalWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonSerializerProxy.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonStringContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\JsonTypeReflector.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\LateBoundMetadataTypeAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\ObjectConstructor.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\OnErrorAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Serialization\ReflectionValueProvider.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Shims\DataContractAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Shims\DataMemberAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Shims\EnumMemberAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Shims\WP8\FormatterAssemblyStyle.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Shims\WP8\SerializationBinder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\TypeNameHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\Base64Encoder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\BidirectionalDictionary.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\CollectionUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\CollectionWrapper.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ConvertUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\DateTimeUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\DictionaryWrapper.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\DynamicReflectionDelegateFactory.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\DynamicWrapper.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\EnumUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\EnumValue.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\EnumValues.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ILGeneratorExtensions.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\JavaScriptUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\LateBoundReflectionDelegateFactory.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ListWrapper.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\MathUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\MethodCall.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\MiscellaneousUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ReflectionDelegateFactory.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ReflectionUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\StringBuffer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\StringUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ThreadSafeStore.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\Utilities\ValidationUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonBinaryType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonBinaryWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonObjectId.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonToken.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Bson\RT_BsonWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_BsonObjectIdConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_CustomCreationConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_DateTimeConverterBase.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_ExpandoObjectConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_IsoDateTimeConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_JavaScriptDateTimeConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_JsonValueConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_KeyValuePairConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_RegexConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_StringEnumConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_VersionConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Converters\RT_XmlNodeConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_IJEnumerable.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JArray.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JConstructor.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JContainer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JEnumerable.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JObject.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JPath.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JProperty.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JPropertyKeyedCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JRaw.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JToken.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JTokenEqualityComparer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JTokenReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JTokenType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JTokenWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_JValue.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Linq\RT_LinqExtensions.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_ConstructorHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_DateFormatHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_DateParseHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_DateTimeZoneHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_DefaultValueHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_FloatFormatHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_FloatParseHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_FormatterAssemblyStyle.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_Formatting.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_IJsonLineInfo.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonArrayAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonConstructorAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonContainerAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonConvert.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonConverter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonConverterAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonConverterCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonDictionaryAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonExtensionDataAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonIgnoreAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonObjectAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonPosition.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonPropertyAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonReaderException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonSerializationException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonSerializer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonSerializerSettings.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonTextReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonTextWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonToken.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonValidatingReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_JsonWriterException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_MemberSerialization.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_MissingMemberHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_NullValueHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_ObjectCreationHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_PreserveReferencesHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_ReferenceLoopHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_Required.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_SerializationBinder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_StringEscapeHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_TraceLevel.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_TypeNameHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\RT_WriteState.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchema.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaBuilder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaConstants.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaException.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaGenerator.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaModel.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaModelBuilder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaNode.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaNodeCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaType.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_JsonSchemaWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_SchemaExtensions.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_UndefinedSchemaIdHandling.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_ValidationEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Schema\RT_ValidationEventHandler.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_CachedAttributeGetter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_CamelCasePropertyNamesContractResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_DefaultContractResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_DefaultReferenceResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_DefaultSerializationBinder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_ErrorContext.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_ErrorEventArgs.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_ExpressionValueProvider.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_IContractResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_IReferenceResolver.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_ITraceWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_IValueProvider.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonArrayContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonContainerContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonDictionaryContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonDynamicContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonLinqContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonObjectContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonPrimitiveContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonProperty.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonPropertyCollection.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonSerializerInternalBase.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonSerializerInternalReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonSerializerInternalWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonSerializerProxy.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonStringContract.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_JsonTypeReflector.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_MemoryTraceWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_ObjectConstructor.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_OnErrorAttribute.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_ReflectionValueProvider.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_TraceJsonReader.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Serialization\RT_TraceJsonWriter.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_Base64Encoder.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_BidirectionalDictionary.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_CollectionUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_CollectionWrapper.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ConvertUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_DateTimeParser.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_DateTimeUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_DictionaryWrapper.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_DynamicProxy.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_DynamicProxyMetaObject.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_DynamicUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_EnumUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_EnumValue.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_EnumValues.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ExpressionReflectionDelegateFactory.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ImmutableCollectionsUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_JavaScriptUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_LateBoundReflectionDelegateFactory.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_MathUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_MethodCall.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_MiscellaneousUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ReflectionDelegateFactory.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ReflectionUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_StringBuffer.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_StringReference.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_StringUtils.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ThreadSafeStore.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_TypeExtensions.cs" />
+     <Compile Include="Assets\Libs\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -200,6 +532,12 @@
      <Compile Include="Assets\SLCGame\Common\Config.cs" />
      <Compile Include="Assets\SLCGame\Common\Console.cs" />
      <Compile Include="Assets\SLCGame\Common\PathMod.cs" />
+     <Compile Include="Assets\SLCGame\Component\TweenFlipCARDS.cs" />
+     <Compile Include="Assets\SLCGame\FSM\FSEvent.cs" />
+     <Compile Include="Assets\SLCGame\FSM\FSState.cs" />
+     <Compile Include="Assets\SLCGame\FSM\FiniteStateMachine.cs" />
+     <Compile Include="Assets\SLCGame\FSM\IState.cs" />
+     <Compile Include="Assets\SLCGame\File\JsonIOHelper.cs" />
      <Compile Include="Assets\SLCGame\GameMain.cs" />
      <Compile Include="Assets\SLCGame\Manager\AssetBundleManager.cs" />
      <Compile Include="Assets\SLCGame\Manager\EventManager.cs" />
@@ -219,6 +557,7 @@
      <Compile Include="Assets\SLCGame\Tools\Data\RC4Helper.cs" />
      <Compile Include="Assets\SLCGame\Tools\Data\SHA1Helper.cs" />
      <Compile Include="Assets\SLCGame\Tools\Data\StringEncrypt.cs" />
+     <Compile Include="Assets\SLCGame\Tools\DbAccess.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\CSVMod.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\DataUnit.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\DebugMod.cs" />
@@ -280,8 +619,10 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
+     <None Include="Assets\Shaders\da_qi_xiao_guo.shader" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked.shader" />
+     <None Include="Assets\Libs\JsonDotNet\ReadMe.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
@@ -290,15 +631,30 @@
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Program Files/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>D:/ProgramData/Unity5/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="SampleClassLibrary">
+ <HintPath>D:/____output/UnityCrazy/UnityFramework/Assets/Libs/JsonDotNet/Examples/Tests/TestModels/SampleClassLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.Sqlite">
+ <HintPath>D:/____output/UnityCrazy/UnityFramework/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>D:/____output/UnityCrazy/UnityFramework/Assets/Plugins/System.Data.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>D:/ProgramData/Unity5/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+	   Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">

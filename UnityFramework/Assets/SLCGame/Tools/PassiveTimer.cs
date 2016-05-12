@@ -40,7 +40,7 @@ namespace SLCGame.Unity
 			    return 0;
 		    }
 
-            double offset = 0;//todo	 MathMod.mod(_startTime + _elaspsedTime, _interval);
+            double offset = MathMod.mod(_startTime + _elaspsedTime, _interval);
             if (deltaTime < 0) { offset = _interval - offset; }
 
 		    double destTimeAbs = Math.Abs(offset) + Math.Abs(deltaTime);
