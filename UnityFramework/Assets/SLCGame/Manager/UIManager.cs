@@ -17,6 +17,8 @@ namespace SLCGame.Unity
         public GameObject hudRoot;
 
         Dictionary<Type, UIWndBase> mWindowDic = new Dictionary<Type, UIWndBase>();
+        //处理缓存
+        Queue<Type> cachQueue;
 
         public int WIN_MAX = 10;
 
@@ -27,17 +29,12 @@ namespace SLCGame.Unity
         /// </summary>
         /// <returns></returns>
         public T ShowWindow<T>() where T : UIWndBase
-        {
-            if (mWindowDic.Count > WIN_MAX)
-            {
-                ClearAllWindow();
-            }
+        { 
             if (mWindowDic.ContainsKey(typeof(T)))
             {
-                mWindowDic[typeof(T)].Show(true);
+                mWindowDic[typeof(T)].Show(true); 
                 return mWindowDic[typeof(T)] as T;
-            }
-
+            } 
             T t = ResourceManager.New<T>(string.Format("Prefabs/Ui/Pop/{0}", GetNameFromType(typeof(T))));
             U3DMod.AddChild(uiRoot, t.gameObject);
             RegisterWindow(t);
@@ -85,14 +82,31 @@ namespace SLCGame.Unity
                 }
             }
         }
-
+        /// <summary>
+        /// 增加了缓存
+        /// </summary>
+        /// <param name="wnd"></param>
 
         void RegisterWindow(UIWndBase wnd)
-        {
+        { 
             wnd.Show();
             Type t = wnd.GetType();
             mWindowDic[t] = wnd;
             wnd.DestroyWndHandler = (wd, e) => { RemoveWindow(wd); };
+
+            if (cachQueue != null)
+            {
+                cachQueue.Enqueue(t);
+                if (mWindowDic.Count > WIN_MAX)
+                {
+                    Type ch = cachQueue.Dequeue();
+                    DestroyWindow(mWindowDic[ch]);
+                }
+            }
+            else
+            {
+                cachQueue = new Queue<Type>(); 
+            }
         }
 
 

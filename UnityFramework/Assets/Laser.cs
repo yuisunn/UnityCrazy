@@ -19,8 +19,7 @@ public class Laser : MonoBehaviour {
     private Vector3 v3 = new Vector3(1.0f, 0.0f, 0.0f);
 
     void Start()
-    {
-
+    { 
         //通过之前创建的对象的名称，就可以在其它类中得到这个对象，  
         //这里在main.cs中拿到line的对象  
         LineRenderGameObject = GameObject.Find("line");
@@ -32,9 +31,7 @@ public class Laser : MonoBehaviour {
 
         //设置线段长度，这个数值须要和绘制线3D点的数量想等  
         //否则会抛异常～～  
-        lineRenderer.SetVertexCount(lineLength);
-
-
+        lineRenderer.SetVertexCount(lineLength); 
     }
 
 

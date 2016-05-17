@@ -1,22 +1,22 @@
-﻿using SLCGame.Tools;
-using SLCGame.Unity;
+﻿using SLCGame.Unity;
 using System;
 using System.Collections;
 //using UnityEngine; 
 using System.Reflection;
 
-/// <summary>
-/// 游戏Action处理工厂
-/// </summary>
-public class ActionFactory  
+namespace SLCGame
+{
+    /// <summary>
+    /// 游戏Action处理工厂
+    /// </summary>
+    public abstract class ActionFactory
     {
-         
         public System.Reflection.Assembly ActionAssembly { set; get; }
 
         protected Hashtable lookupType = new Hashtable();
         protected virtual string ActionFormat()
         {
-            return "Action{0}";
+            return "Action_{0}";
         }
 
         public ActionBase CreateAction(object actionType)
@@ -40,8 +40,9 @@ public class ActionFactory
                 }
                 if (type != null)
                 {
+                    //action.ActionId = name;
                     //action = Activator.CreateInstance(type) as ActionBase;
-                    action = SLCGame.FastActivator.Create(type) as ActionBase;
+                    //action = FastActivator.Create(type) as ActionBase;
                 }
             }
             catch (Exception ex)
@@ -50,4 +51,6 @@ public class ActionFactory
             }
             return action;
         }
-    } 
+    }
+
+}

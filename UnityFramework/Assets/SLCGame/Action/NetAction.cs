@@ -1,38 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class NetActionFactory : ActionFactory
+
+namespace SLCGame
 {
-    private static NetActionFactory _Instance;
-    public static NetActionFactory Instance
+    public class NetActionFactory : ActionFactory
     {
-        get
+        private static NetActionFactory _Instance;
+        public static NetActionFactory Instance
         {
-            if (null == _Instance)
-                _Instance = new NetActionFactory();
-            return _Instance;
+            get
+            {
+                if (null == _Instance)
+                    _Instance = new NetActionFactory();
+                return _Instance;
+            }
+        }
+
+        protected override string ActionFormat()
+        {
+            return "Action{0}";
         }
     }
 
-    protected override string ActionFormat()
+    /// <summary>
+    /// 游戏Action接口
+    /// </summary>
+    public class NetAction : ActionBase
     {
-        return "Action{0}";
-    }
-}
+        public NetAction()
+        {
+            ActParam = new ActionParam();
+        }
 
-/// <summary>
-/// 游戏Action接口
-/// </summary>
-public class NetAction : ActionBase
-{
-    public NetAction()
-    {
-        ActParam = new ActionParam();
-    } 
-
-    public virtual void SendParameterNet(string id, ActionParam actionParam) { }
-    public virtual void SendParameterLocal(string id, ActionParam actionParam) { } 
-    public override bool ProcessAction()
-    {
-        return true;
+        public virtual void SendParameterNet(string id, ActionParam actionParam) { }
+        public virtual void SendParameterLocal(string id, ActionParam actionParam) { }
+        public override bool ProcessAction()
+        {
+            return true;
+        }
     }
 }

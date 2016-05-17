@@ -1,36 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LogicActionFactory : ActionFactory
+namespace SLCGame
 {
-    private static LogicActionFactory _Instance;
-    public static LogicActionFactory Instance
+    public class LogicActionFactory : ActionFactory
     {
-        get
+        private static LogicActionFactory _Instance;
+        public static LogicActionFactory Instance
         {
-            if (null == _Instance)
-                _Instance = new LogicActionFactory();
-            return _Instance;
+            get
+            {
+                if (null == _Instance)
+                    _Instance = new LogicActionFactory();
+                return _Instance;
+            }
+        }
+
+        protected override string ActionFormat()
+        {
+            return "Action{0}";
         }
     }
 
-    protected override string ActionFormat()
+    public abstract class LogicAction : ActionBase
     {
-        return "Action{0}";
-    }
-}
-
-public abstract class LogicAction : ActionBase
-{ 
         public LogicAction()
         {
             ActParam = new ActionParam();
         }
-     
+
         public virtual void SendParameterLogic(string id, ActionParam actionParam) { }
-        
+
         public override bool ProcessAction()
         {
             return true;
-        } 
+        }
+    }
 }

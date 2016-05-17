@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using SLCGame;
 
 public class ArenaListRefresh : LogicAction
 {
