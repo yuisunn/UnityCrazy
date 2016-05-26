@@ -1,0 +1,59 @@
+struct
+1将结构赋值给新变量时，将复制所有数据，并且对新副本所做的任何修改不会更改原始副本的数据。
+2但是结构仍可以通过ref和out参数引用方式传递给函数成员
+3结构可用作可以为 null 的类型，因而可向其赋 null 值
+4不可以被用new
+5结构声明中不允许使用abstract和sealed修饰符
+
+using
+1②为命名空间或类型创建别名。
+               using MyCompany = PC.Company;       //命名空间的别名。
+using语句里的对象必须 是实现了IDisposable接口的类型
+2using 语句允许程序员指定使用资源的对象应当何时释放资源。using 语句中使用的对象必须实现 IDisposable 接口。此接口提供了 Dispose 方法，该方法将释放此对象的资源。
+    ①可以在 using 语句之中声明对象。
+　　    Font font2 = new Font("Arial", 10.0f);
+　　    using (font2)
+　　    {
+　　        // use font2
+　　    }
+②可以在 using 语句之前声明对象。
+　　    using (Font font2 = new Font("Arial", 10.0f))
+　　    {
+　　        // use font2
+　　    }
+  ③可以有多个对象与 using 语句一起使用，但是必须在 using 语句内部声明这些对象。
+        using (Font font3=new Font("Arial",10.0f), font4=new Font("Arial",10.0f))
+　　    {
+　　        // Use font3 and font4.
+　　    }
+
+using实质
+    在程序编译阶段，编译器会自动将using语句生成为try-finally语句，并在finally块中调用对象的Dispose方法，来清理资源。所以，using语句等效于try-finally语句，例如：
+    Font f2 = new Font("Arial", 10, FontStyle.Bold);
+　　try
+　　{
+　　    //执行文本绘制操作
+　　}
+　　finally
+　　{
+　　    if (f2 != null) ((IDisposable)f2).Dispose();
+　　}
+
+jit
+aot
+
+Command模式描述成是“具象化的方法调用”，意思就是将一个方法封装成一个具体的对象。 
+这些东西听起来很像“回调”，“一级函数”，“函数指针”，“闭包”或者“偏应用函数”等概念，因为这些概念确实大致相同，只是跟你使用的语言不同有关。正如GoF最后提到的：
+Command模式就是用面向对象的方式取代回调函数。
+command 可以提供对撤销的支持
+
+
+Flayweight模式通过将一个对象的数据分成两类来解决问题。第一类不是单个实例个性化的数据，他们可以在所有实例间共享。GoF把这类数据叫做固有属性，但我更喜欢称之为上下文无关。在这个例子里，就是那些树的几何模型和纹理贴图。
+剩下的数据就是外部属性，这部分每一个实例都是独一无饿=二的。在这个例子中，就是树的位置、大小、颜色。就像上面那段代码展示的那样，这个模式通过在每一个出现的对象中共享固定属性，来达到节省内存的目的。
+
+
+       Singleton单件模式解决的问题是：实体对象个数问题（这个现在还不太容易混）
+       AbstractFactory抽象工厂模式解决的问题是：“一系列互相依赖的对象”的创建工作
+       Builder生成器模式解决的问题是：“一些复杂对象”的创建工作，子对象变化较频繁，对算法相对稳定
+      FactoryMethor工厂方法模式解决的问题是：某个对象的创建工作
+	Prototype原型模式是通过拷贝自身来创建新的对象

@@ -1,0 +1,111 @@
+ 
+GPU优化
+
+●? DrawCall数量：峰值 < 250，主体范围（5% - 95%）应在（0 - 200）个之内。
+
+       ● Triangle数量：峰值 < 100000/帧。
+
+       ● VBO上传量：峰值 < 5MB，频繁加载的资源使用缓存池缓存。
+
+       ●? Skinned Mesh数量：峰值 < 50，对应Profiler中的MeshSdinning.Update、Animator.Update。
+
+?       ● RenderTexture：数量 < 10。
+渲染
+1.不使用或少使用动态光照，使用light mapping和light probes（光照探头）
+2.不使用法线贴图（或者只在主角身上使用），静态物体尽量将法线渲染到贴图
+3．不适用稠密的粒子，尽量使用UV动画
+4.不使用fog，使用渐变的面片（参考shadow gun）
+5.不要使用alpha –test（如那些cutout shader），使用alpha-blend代替
+6．使用尽量少的material，使用尽量少的pass和render次数，如反射、阴影这些操作
+7.如有必要，使用Per-Layer Cull Distances，Camera.layerCullDistances
+8.只使用mobile组里面的那些预置shader
+9.使用occlusion culling
+11.远处的物体绘制在skybox上
+12.使用drawcall batching：
+        对于相邻动态物体：如果使用相同的shader，将texture合并
+        对于静态物体，batching要求很高， 
+13 保持材质的数目尽可能少。这使得Unity更容易进行批处理。
+14 使用纹理图集（一张大贴图里包含了很多子贴图）来代替一系列单独的小贴图。它们可以更快地被加载，具有很少的状态转换，
+15 如果使用了纹理图集和共享材质，使用Renderer.sharedMaterial 来代替Renderer.material 。
+16 按页面 关卡分 图集 头像背景 可用texture
+ngui
+3 关闭贴图的读写选项 
+	Unity中导入的每张贴图都有一个启用可读可写（Read/Write Enabled）的开关，对应的程序参数是TextureImporter.isReadable。
+规格上限
+1.      每个模型只使用一个skinned mesh renderer
+2.      每个mesh不要超过3个material
+3.      骨骼数量不要超过30
+4.      面数在1500以内将得到好的效率
+
+优化显存带宽
+1 OpenGL ES 2.0使用ETC1格式压缩等等，在打包设置那里都有。 贴图压缩格式：ios上尽量使用PVRTC，Android上使用ETC
+2使用MipMap。
+
+#即使在500个DrawCall的情况下，动画依然可以跑得很流畅，相比之下贴图大小对流畅度的影响要大得多。
+
+内存优化  用到的内存有  
+4 减少场景中的GameObject数量
+5 另外，数量庞大的图标资源（如物品图标）不要做在图集里，而应该采用UITexture。
+6 在界面设计上，尽量让美术将控件设计为可以做九宫格拉伸，即UISprite的类型为Sliced。这样美术就可以只切出一张小图，我们在Unity中将它拉大。当然，一个控件做九宫格也就意味着其顶点数量从4个增加到至少16个（九宫格的中心格子采用Tiled做平铺类型的话，顶点数会更多），构建DrawCall的开销会更大（见第6点），但一般只要DrawCall安排合理（同样见第6点）就不会有问题。
+7当一个UI控件（UIWidget）的位置、大小或颜色等属性发生变化时，UIPanel就需要重建这个控件所用的DrawCall， 尤其是将运行时会运动变化的UI控件和静止不变的UI控件的DrawCall合在了一起
+
+1Unity3D内部的内存  assetbundle资源 和 prefab
+	资源：纹理、网格、音频等等
+	GameObject和各种组件。
+	引擎内部逻辑需要的内存：渲染器，物理系统，粒子系统等等  
+2Mono的托管内存 
+
+3 若干我们自己引入的DLL或者第三方DLL所需要的内存。
+1 String的相加操作，会频繁申请内存并释放，导致gc频繁，使用System.Text.StringBuilder代替
+
+纹理优化
+ 如果纹理用于UI或2D场景，禁用MipMaps。
+通过减色的方式降低纹理大小。
+
+CPU
+   ●? Rigidbody数量：峰值 < 50/帧，对应Profiler中的Physics.Simulate。
+
+       ● 碰撞体数量：峰值 < 100/帧，对应Profiler中的Physics.Simulate。
+2.2物理
+1.真实的物理（刚体）很消耗，不要轻易使用，尽量使用自己的代码模仿假的物理 原因很简单，因为MeshCollider太复杂了，想起我当年做秘密行动的时候一次次的崩溃，也是醉了，
+2.对于投射物不要使用真实物理的碰撞和刚体，用自己的代码处理
+3.不要使用mesh collider
+4.在edit->project setting->time中调大FixedTimestep（真实物理的帧率）来减少cpu损耗 并不是所有的游戏中物理计算都需要0.02秒执行一次。因此这个值，可以针对项目慢慢调试
+5千万不要使用Mesh对撞机。
+7.使用层次而不是标签。我们可以轻松为对象分配层次和标签，并查询特定对象，但是涉及碰撞逻辑时，层次至少在运行表现上会更有明显优势。更快的物理计算和更少的无用分配内存是使用层次的基本原因。
+2.减少角色控制器移动命令的调用。移动角色控制器会同步发生，每次调用都会耗损极大的性能。我们的做法是缓存每帧的移动请求，并且仅运用一次。
+
+
+2.3脚本编写
+1.尽量不要动态的instantiate和destroy object，使用object pool
+2.尽量不要再update函数中做复杂计算，如有需要，可以隔N帧计算一次
+3.不要动态的产生字符串，如Debug.Log("boo" + "hoo")，尽量预先创建好这些字符串资源
+4.cache一些东西，在update里面尽量避免search，如GameObject.FindWithTag("")、GetComponent这样的调用，可以在start中预先存起来
+5.尽量减少函数调用栈，用x = (x > 0 ? x : -x);代替x = Mathf.Abs(x)
+6.下面的代码是几个gc“噩梦”
+
+GC(Garbage Collection垃圾回收) 建议总内存控制在150MB以下；堆内存控制在40MB以下。 纹理内存占用过大：峰值 < 50MB。 网格资源内存过大：峰值 < 20MB。? 动画片段：内存 < 15MB， 音频资源：内存 < 15MB， 
+1比如类的实例，字符串，数组等等。而作为int，float，包括结构体struct其实都是值类型，
+2尽量不要使用foreach，而是使用for。foreach其实会涉及到迭代器的使用，而据传说每一次循环所产生的迭代器会带来24 Bytes的垃圾。那么循环10次就是240Bytes。
+3不要直接访问gameobject的tag属性。比如if (go.tag == “human”)最好换成if (go.CompareTag (“human”))。因为访问物体的tag属性会在堆上额外的分配空间。
+4最好不用LINQ的命令，因为它们会分配临时的空间，同样也是GC收集的目标。而且我很讨厌LINQ的一点就是它有可能在某些情况下无法很好的进行AOT编译。 ios 不可用
+5控制StartCorountine()的次数：开启一个协程，至少分配37B的内存
+6使用StringBuilder来代替String进行字符串拼接：StringBuilder.Append方法在拼
+7避免使用开销大的函数 缓存组件：每次GetComponent均会分配一定的GC Alloc；每次获取对象名称Object.name（实际为Object.get_name()）会分配39B
+8如GameObject.Find、GameObject.FindWithTag、Object.FindObjectOfType等查询方法。
+9 切换场景时避开内存峰值。当前一个场景还未释放就切换到新场景，这时由于两个场景的内存叠加容易造成内存峰值。可以采用在屏幕中间遮盖一个Loading场景，在旧场景释放完成，并且新场景初始化结束后，再隐藏Loading场景。
+
+
+
+代码质量
+1以物体的Transform组件为例，我们应该只访问一次，之后就将它的引用保留，而非每次使用都去访问。
+2善于使用OnBecameVisible()和OnBecameVisible(),来控制物体的update()函数的执行以减少开销。
+3使用内建的数组，比如用Vector3.zero而不是new Vector(0, 0, 0);
+4对于方法的参数的优化：善于使用ref关键字。值类型的参数，是通过将实参的值复制到形参，来实现按值传递到方法，也就是我们通常说的按值传递。复制嘛，总会让人感觉很笨重。比如Matrix4x4这样比较复杂的值类型，如果直接复制一份新的，反而不如将值类型的引用传递给方法作为参数。
+5GameObject.SetActive，显示或隐藏一些对象，数量达到一百多次之多。这类操作的CPU开销很大（尤其是NGUI的UIWidget在激活的时候会做很多初始化工作），而且会触发大量GC。而原来的SetActive(false)改为将对象移到屏幕外，SetActive(true)改为将对象移回屏幕内。这样性能就好多了。
+6为了提高在Unity Editor中反复修改AssetBundles的调试效率，推荐开发时使用Resources.LoadAssetAtPath来避免重新建立AssetBundles。
+
+
+
+
+
