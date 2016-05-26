@@ -11,6 +11,9 @@ namespace SLCGame.Unity
         public AsyncOperation _asyn = null;
         public AssetBundle _sceneBundle = null;
 
+
+
+
         public float progress
         {
             get
@@ -23,6 +26,11 @@ namespace SLCGame.Unity
 
                 return 1;
             }
+        }
+
+        public void SetNextScene(int scene)
+        {
+
         }
 
 

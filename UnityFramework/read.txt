@@ -6,3 +6,10 @@
 
 输入输出用 commd 模式解耦 可以随意替换按键后的调用
 角色动画代码 和 ai代码用commend解耦
+
+awake 里注册回调
+
+增加  object pool 来做 instantiate 和 destory object 的工作
+1Prefab  换场景是否释放
+2prefab 预加载 
+3 限制 实例化 的prefab 数量

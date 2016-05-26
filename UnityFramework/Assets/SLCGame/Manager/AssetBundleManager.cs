@@ -7,6 +7,9 @@ using SLCGame.Tools;
 
 namespace SLCGame.Unity
 {
+    /// <summary>
+    /// asset 的加载 
+    /// </summary>
     public class AssetBundleManager : Singleton<AssetBundleManager>
     {
 

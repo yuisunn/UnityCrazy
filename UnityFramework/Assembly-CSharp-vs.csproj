@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Game\ActionDefine.cs" />
      <Compile Include="Assets\Game\GameAction\ActionArenaList.cs" />
-     <Compile Include="Assets\Game\GameAction\ActionArenaListRefresh.cs" />
      <Compile Include="Assets\Laser.cs" />
      <Compile Include="Assets\Libs\JsonDotNet\Examples\Serialization\1-BasicSerialization\JNSimpleObjectSample.cs" />
      <Compile Include="Assets\Libs\JsonDotNet\Examples\Serialization\2-Polymorphism\JNPolymorphismSample.cs" />
@@ -526,18 +525,14 @@
      <Compile Include="Assets\SLCGame\Action\NetAction.cs" />
      <Compile Include="Assets\SLCGame\AppMain.cs" />
      <Compile Include="Assets\SLCGame\Common\ALLEvents.cs" />
-     <Compile Include="Assets\SLCGame\Common\ActionFactory.cs" />
      <Compile Include="Assets\SLCGame\Common\AllDefines.cs" />
      <Compile Include="Assets\SLCGame\Common\Allenums.cs" />
      <Compile Include="Assets\SLCGame\Common\Config.cs" />
-     <Compile Include="Assets\SLCGame\Common\Console.cs" />
-     <Compile Include="Assets\SLCGame\Common\PathMod.cs" />
      <Compile Include="Assets\SLCGame\Component\TweenFlipCARDS.cs" />
      <Compile Include="Assets\SLCGame\FSM\FSEvent.cs" />
      <Compile Include="Assets\SLCGame\FSM\FSState.cs" />
      <Compile Include="Assets\SLCGame\FSM\FiniteStateMachine.cs" />
      <Compile Include="Assets\SLCGame\FSM\IState.cs" />
-     <Compile Include="Assets\SLCGame\File\JsonIOHelper.cs" />
      <Compile Include="Assets\SLCGame\GameMain.cs" />
      <Compile Include="Assets\SLCGame\Manager\AssetBundleManager.cs" />
      <Compile Include="Assets\SLCGame\Manager\EventManager.cs" />
@@ -546,6 +541,7 @@
      <Compile Include="Assets\SLCGame\Manager\SceneManager.cs" />
      <Compile Include="Assets\SLCGame\Manager\UIManager.cs" />
      <Compile Include="Assets\SLCGame\Tools\Assert.cs" />
+     <Compile Include="Assets\SLCGame\Tools\Console.cs" />
      <Compile Include="Assets\SLCGame\Tools\Data\AesHelper.cs" />
      <Compile Include="Assets\SLCGame\Tools\Data\CRC32.cs" />
      <Compile Include="Assets\SLCGame\Tools\Data\CircleBuffer.cs" />
@@ -558,11 +554,13 @@
      <Compile Include="Assets\SLCGame\Tools\Data\SHA1Helper.cs" />
      <Compile Include="Assets\SLCGame\Tools\Data\StringEncrypt.cs" />
      <Compile Include="Assets\SLCGame\Tools\DbAccess.cs" />
+     <Compile Include="Assets\SLCGame\Tools\File\JsonIOHelper.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\CSVMod.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\DataUnit.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\DebugMod.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\ExMonoBehaviour.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\MathMod.cs" />
+     <Compile Include="Assets\SLCGame\Tools\Mod\PathMod.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\Singleton.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\StringMod.cs" />
      <Compile Include="Assets\SLCGame\Tools\Mod\Threader.cs" />

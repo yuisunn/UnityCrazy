@@ -7,13 +7,20 @@ namespace SLCGame
     /// 用来介入 sdk等
     /// </summary>
     public class AppMain : MonoBehaviour
-    { 
-        // Use this for initialization
-        void Start()
+    {
+        public void InitializeMode()
+        { }
+        public void InitializeUnity()
+        { }
+        public void InitializeGame()
         {
             GameMain.Instance.Init();
         }
-
+        public void InitializeWindowTitle()
+        { }
+        public void InitializeOptionValues()
+        {
+        } 
         // Update is called once per frame
         void Update()
         {

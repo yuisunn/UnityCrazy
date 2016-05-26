@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Laser : MonoBehaviour {
 
@@ -18,21 +19,47 @@ public class Laser : MonoBehaviour {
     private Vector3 v2 = new Vector3(0.0f, 0.0f, 1.0f);
     private Vector3 v3 = new Vector3(1.0f, 0.0f, 0.0f);
 
+    public Dictionary<int, A> dic;
     void Start()
-    { 
-        //通过之前创建的对象的名称，就可以在其它类中得到这个对象，  
-        //这里在main.cs中拿到line的对象  
-        LineRenderGameObject = GameObject.Find("line");
-
-        //通过游戏对象，GetComponent方法 传入LineRenderer  
-        //就是之前给line游戏对象添加的渲染器属性  
-        //有了这个对象才可以为游戏世界渲染线段  
-        lineRenderer = (LineRenderer)LineRenderGameObject.GetComponent("LineRenderer");
-
-        //设置线段长度，这个数值须要和绘制线3D点的数量想等  
-        //否则会抛异常～～  
-        lineRenderer.SetVertexCount(lineLength); 
+    {
+        Main();
     }
+
+    public class A
+    { 
+        public int a = 1;
+        public int b = 0;
+    }
+    public void Main()
+    {
+        a1 = Main2();
+        a1.b = 3;
+        AAM(a1);
+    }
+    public A DIC(A a)
+    {
+        dic = new Dictionary<int, A>();
+        dic.Add(1,a)
+            return dic[1];
+    }
+
+    public void AAM(A a)
+    {
+        a.b = 5;
+        a3 = a;
+        a3.a = 6;
+        DIC(a3);
+    }
+    public A Main2()
+    {
+        a2 = new A();
+        a2.a = 2;
+        return a2;
+    }
+
+    A a1;
+    A a2;
+    A a3;
 
 
     void Update()
