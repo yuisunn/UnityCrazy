@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Reflection; 
+using System.Reflection;
+using SLCGame.Unity;
 
-namespace SLCGame.Unity
+namespace SLCGame.Tools.Unity
 {
     public class U3DMod
     {
@@ -12,7 +13,7 @@ namespace SLCGame.Unity
             GameObject go = new GameObject(goname);
             T t = go.AddComponent<T>();
             return t;
-        }
+        } 
 
         public static T Find<T>() where T : Component
         {

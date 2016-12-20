@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SLCGame.Tools;
+using SLCGame.Tools.Unity;
 
 namespace SLCGame.Unity
 {
@@ -15,6 +16,7 @@ namespace SLCGame.Unity
             public float mTimerStay = 0f;
             public float mStayMax = 30f;
             private Object mRes;
+            public bool m_isRelease = true;//是否释放
             public Object resCache{
                 set{
                     mRes = value;
@@ -24,6 +26,11 @@ namespace SLCGame.Unity
                     return mRes;
                 }
             }
+            public void Release()
+            {
+                if (m_isRelease)
+                    Resources.UnloadAsset(mRes);
+            }
 
             public bool Tick()
             {
@@ -31,8 +38,36 @@ namespace SLCGame.Unity
                 return mTimerStay < mStayMax;
             }
         }
-
         Dictionary<string, ResCache> mCacheDic = new Dictionary<string, ResCache>();
+
+        /// <summary>
+        /// 根据情况有的标记为不卸载的可以不卸载
+        /// </summary>
+        public void ClearResources()
+        {
+            string[] keys = mCacheDic.Keys.ToArray();
+            for (int i = 0; i < keys.Length; ++i)
+            {
+                mCacheDic[keys[i]].Release();
+                if (mCacheDic[keys[i]].m_isRelease)
+                    mCacheDic.Remove(keys[i]);
+            }
+            Resources.UnloadUnusedAssets();
+        }
+        /// <summary>
+        /// 清除全部资源
+        /// </summary>
+        public void ClearAllResources()
+        {
+            string[] keys = mCacheDic.Keys.ToArray();
+            for (int i = 0; i < keys.Length; ++i)
+            {
+                mCacheDic[keys[i]].Release();
+                if (mCacheDic[keys[i]].m_isRelease)
+                    mCacheDic.Remove(keys[i]);
+            }
+            Resources.UnloadUnusedAssets();
+        }
 
         /// <summary>
         /// 加载Resources对象

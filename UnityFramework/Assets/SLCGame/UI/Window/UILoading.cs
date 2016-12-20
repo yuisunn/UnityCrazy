@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System; 
+using System.Collections.Generic; 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace SLCGame.Unity
-{
-    [RequireComponent(typeof(UIPanel))]
+{ 
     public class UILoading : UIObject
     {
 
-        public UITexture loadingBack = null;
-        public UILabel progresLabel = null;
-        public UISlider progresSlider = null;
+        public Texture loadingBack = null;
+        public Text progresLabel = null;
+        public Slider progresSlider = null;
         public FloatDelegate GetProgres;
 
 

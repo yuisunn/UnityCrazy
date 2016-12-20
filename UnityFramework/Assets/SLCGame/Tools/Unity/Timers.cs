@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq; 
 
-namespace SLCGame.Unity
+namespace SLCGame.Tools.Unity
 {
     public class Timers
     {

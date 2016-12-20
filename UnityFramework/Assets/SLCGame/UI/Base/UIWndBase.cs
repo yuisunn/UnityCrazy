@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System; 
-
+using System;
+using SLCGame.Tools.Unity;
 
 namespace SLCGame.Unity
 {
@@ -16,9 +16,23 @@ namespace SLCGame.Unity
 
         public virtual void Init()
         {
-            //EventManager.Instance.Regiter<EventRoleDataRefresh>(RefreshUI);
+            //EventMgr.Register<>(RefreshUI);
         }
 
+        public virtual void HideWnd()
+        {
+            U3DMod.SetActive(this.gameObject, false);
+        }
+
+        public virtual void DestoryWnd()
+        {
+            Destroy();
+        }
+
+        public virtual void RefreshUI()
+        {
+            
+        }
 
         protected virtual void OnClickClose(GameObject obj)
         {

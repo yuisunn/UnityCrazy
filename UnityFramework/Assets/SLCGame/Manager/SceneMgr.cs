@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 using SLCGame.Tools;
+using System;
 
 namespace SLCGame.Unity
 {
@@ -33,10 +34,12 @@ namespace SLCGame.Unity
 
         }
         /// <summary>
-        /// 卸载缓存
+        /// 卸载缓存根据情况 有的标记为不卸载的可以不卸载
         /// </summary>
         public void ClearCachesAndFreeMemory()
         {
+            AssetBundleMgr.Instance.ClearAssetBundles();
+            ResourceMgr.Instance.ClearResources();
         }
 
 

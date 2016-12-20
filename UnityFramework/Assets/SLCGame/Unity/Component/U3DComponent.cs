@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections; 
+using System.Collections;
+using SLCGame.Tools.Unity;
 
 namespace SLCGame.Unity
 {

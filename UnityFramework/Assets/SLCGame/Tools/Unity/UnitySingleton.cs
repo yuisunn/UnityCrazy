@@ -8,7 +8,7 @@
 /// As a note, this is made as MonoBehaviour because we need Coroutines.  
 /// </summary>  
 
-namespace SLCGame.Unity
+namespace SLCGame.Tools.Unity
 {
 	public class UnitySingleton<T> : MonoBehaviour where T : MonoBehaviour  
 	{  

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using SLCGame.Tools;
+using SLCGame.Tools.Unity;
 
 namespace SLCGame.Unity
 {
@@ -35,7 +36,7 @@ namespace SLCGame.Unity
                 mWindowDic[typeof(T)].Show(true); 
                 return mWindowDic[typeof(T)] as T;
             } 
-            T t = ResourceManager.New<T>(string.Format("Prefabs/Ui/Pop/{0}", GetNameFromType(typeof(T))));
+            T t = ResourceMgr.New<T>(string.Format("Prefabs/Ui/Pop/{0}", GetNameFromType(typeof(T))));
             U3DMod.AddChild(uiRoot, t.gameObject);
             RegisterWindow(t);
             return t;

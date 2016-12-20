@@ -28,7 +28,9 @@ namespace SLCGame.Unity
             AssetBundle mAssetBundle;
             public float timer = 0;
             public float waitTime = 5;
-
+            public bool m_isRelease;//是否执行释放
+            public bool m_isAssetRelease ;//是否销毁asset load的对象 
+            public bool m_isHaveMirror;
             public AssetBundle assetBundle
             {
                 get
@@ -40,7 +42,19 @@ namespace SLCGame.Unity
 
             public BundleCache(AssetBundle ab)
             {
+                m_isRelease = true;
+                m_isAssetRelease = false;
                 mAssetBundle = ab;
+                m_isHaveMirror = true;
+            }
+
+            public void Release()
+            {
+                if (m_isRelease && mAssetBundle!=null)
+                {
+                    mAssetBundle.Unload(m_isAssetRelease);
+                }
+
             }
 
             public bool Tick()
@@ -84,18 +98,7 @@ namespace SLCGame.Unity
         {
             string path = PathMod.AssetPath(string.Format("Effect/{0}", filename));
             LoadAsset(path, sourcename, cb, forceloadAsyn);
-        }
-        public void LoadEquip(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
-        {
-            string path = PathMod.AssetPath(string.Format("Equip/{0}", filename));
-            LoadAsset(path, sourcename, cb, forceloadAsyn);
-        }
-        public void LoadMonster(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
-        {
-            string path = PathMod.AssetPath( string.Format("Monster/{0}",filename));
-            LoadAsset(path, sourcename, cb, forceloadAsyn);
-        }
-
+        } 
  
 
         /// <summary>
@@ -319,19 +322,43 @@ namespace SLCGame.Unity
             return bc.assetBundle;
         }
 
+        /// <summary>
+        /// 卸载全部资源 asset也一起
+        /// </summary>
+        public void ClearAllAssetBundles()
+        {
+            string[] keys = mAssetBundleDic.Keys.ToArray();
+            for (int i = 0; i < mAssetBundleDic.Count; ++i)
+            {
+                mAssetBundleDic[keys[i]].assetBundle.Unload(true);
+            }
+            mAssetBundleDic.Clear();
+        }
 
         /// <summary>
-        /// 清楚所有AssetBundle资源
+        /// 根据情况有的标记为不卸载的可以不卸载
         /// </summary>
         /// <returns></returns>
         public void ClearAssetBundles()
         {
-            foreach (string key in mAssetBundleDic.Keys.ToArray())
+            string[] keys = mAssetBundleDic.Keys.ToArray();
+            for (int i = 0; i < mAssetBundleDic.Count; ++i)
+            { 
+                mAssetBundleDic[keys[i]].Release();
+                if(mAssetBundleDic[keys[i]].m_isRelease)
+                    mAssetBundleDic.Remove(keys[i]);
+            }    
+        }
+        /// <summary>
+        /// 释放全部镜像 
+        /// </summary>
+        public void ClearAssetBundlesMirror()
+        {
+            string[] keys = mAssetBundleDic.Keys.ToArray();
+            for (int i = 0; i < mAssetBundleDic.Count; ++i)
             {
-                mAssetBundleDic[key].Unload(false);
+                mAssetBundleDic[keys[i]].assetBundle.Unload(false); 
             }
-            mAssetBundleDic.Clear();
-
         }
 
         public void Update()

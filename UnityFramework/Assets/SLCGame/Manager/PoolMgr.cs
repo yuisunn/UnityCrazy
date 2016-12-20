@@ -17,11 +17,11 @@ namespace SLCGame.Unity
 
         }
 
-        public GameObject NewPrefabInst(string path)
-        {
-            GameObject
-            return 
-        }
+        //public GameObject NewPrefabInst(string path)
+        //{
+        //    GameObject obj = 
+        //    return 
+        //}
     }
 
         //    Dictionary<int, GObject> mObjectDic = new Dictionary<int, GObject>();
