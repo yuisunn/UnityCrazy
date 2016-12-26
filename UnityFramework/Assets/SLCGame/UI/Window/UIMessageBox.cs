@@ -20,7 +20,7 @@ namespace SLCGame.Unity
 
         private MessageBoxResultDelegate callback;
 
-        protected override void Awake()
+        protected void Awake()
         { 
             //btnYes.onClick.Add .AddListener(new UnityAction(OnSubmitHandler));
             //ListenOnClick(btnNo, OnNoHandler);

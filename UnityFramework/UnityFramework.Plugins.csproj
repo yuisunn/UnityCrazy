@@ -153,7 +153,6 @@
     <None Include="Assets\SLCGame\Shader\StyleShader\Cartoon.shader" />
     <None Include="Assets\SLCGame\Shader\StyleShader\Hatching.shader" />
     <None Include="Assets\SLCGame\Shader\StyleShader\LowPolygon.shader" />
-    <None Include="Assets\skynet-client\Plugins\crypt\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

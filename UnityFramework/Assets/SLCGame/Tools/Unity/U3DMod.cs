@@ -7,6 +7,8 @@ namespace SLCGame.Tools.Unity
 {
     public class U3DMod
     {
+
+
         public static T New<T>( string name = null ) where T : Component
         {
             string goname = name == null ? typeof(T).ToString() : name;

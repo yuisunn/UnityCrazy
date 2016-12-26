@@ -126,6 +126,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UnityFramework.Plugins.csproj">
+      <Project>{E4B55A8A-5AEF-579D-470F-7D770A5B0DBA}</Project>
+      <Name>UnityFramework.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityFramework.csproj">
       <Project>{97D2EB21-5CF2-DAAB-F1B1-E6EBC52E314D}</Project>
       <Name>UnityFramework</Name>
@@ -133,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\ActionCodeMaker.cs" />
+    <Compile Include="Assets\Editor\AnimAutoCreate.cs" />
     <Compile Include="Assets\Libs\NGUI\Examples\Scripts\InventorySystem\Editor\InvDatabaseInspector.cs" />
     <Compile Include="Assets\Libs\NGUI\Examples\Scripts\InventorySystem\Editor\InvFindItem.cs" />
     <Compile Include="Assets\Libs\NGUI\Scripts\Editor\ActiveAnimationEditor.cs" />
@@ -216,6 +221,21 @@
     <Compile Include="Assets\Libs\NGUI\Scripts\Editor\UIWidgetContainerEditor.cs" />
     <Compile Include="Assets\Libs\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
     <Compile Include="Assets\Libs\NGUI\Scripts\Editor\UIWrapContentEditor.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\CoGraphUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\CoTrackerDatabase.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\CoTrackerPanel_Graph.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\CoTrackerWindow.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\GraphIt.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\PAChartDataSet.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\PAEditorConst.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\PAEditorUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\TableView\TableView.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\TableView\TableViewAppr.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\TableView\TableViewColDesc.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\TableView\TableViewDemoWindow.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\TableView\TableView_Impl.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Editor\TestCommands\TestPACommon.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Editor\UsWindow.cs" />
     <Compile Include="Assets\Libs\UIFrameWork\Editor\NGUITool\CreateNGUIAtlaesWithTP.cs" />
     <Compile Include="Assets\Libs\UIFrameWork\Editor\NGUITool\CreateNGUIAtlaesWithTPForETC1.cs" />
     <Compile Include="Assets\Libs\UIFrameWork\Editor\NGUITool\CreateNGUIBitmapFont.cs" />
@@ -260,6 +280,7 @@
     <None Include="Assets\Libs\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\Libs\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
     <None Include="Assets\Libs\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+    <None Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\GraphIt.shader" />
     <None Include="Assets\Libs\UIFrameWork\Editor\NGUITool\ReadMe.txt" />
     <None Include="Assets\Libs\UIFrameWork\Shaders\UI_ETC 1.shader" />
     <None Include="Assets\Libs\UIFrameWork\Shaders\UI_ETC 2.shader" />
@@ -286,7 +307,6 @@
     <None Include="Assets\SLCGame\Shader\StyleShader\Cartoon.shader" />
     <None Include="Assets\SLCGame\Shader\StyleShader\Hatching.shader" />
     <None Include="Assets\SLCGame\Shader\StyleShader\LowPolygon.shader" />
-    <None Include="Assets\skynet-client\Plugins\crypt\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

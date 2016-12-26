@@ -1162,58 +1162,71 @@ public class UIPanel : UIRect
 
 	static int mUpdateFrame = -1;
 
-	/// <summary>
-	/// Update all panels and draw calls.
-	/// </summary>
+    /// <summary>
+    /// Update all panels and draw calls.
+    /// </summary>
 
-	void LateUpdate ()
-	{
+    public List<UIRenderSort> sortUIs = new List<UIRenderSort>();
+
+    public void AddSortUI(UIRenderSort ui)
+    {
+        if (!sortUIs.Contains(ui))
+            sortUIs.Add(ui);
+    }
+    public void RemoveSortUI(UIRenderSort ui)
+    {
+        sortUIs.Remove(ui);
+    }
+
+    void LateUpdate()
+    {
 #if UNITY_EDITOR
-		if (mUpdateFrame != Time.frameCount || !Application.isPlaying)
+        if (mUpdateFrame != Time.frameCount || !Application.isPlaying)
 #else
-		if (mUpdateFrame != Time.frameCount)
+        if (mUpdateFrame != Time.frameCount)  
 #endif
-		{
-			mUpdateFrame = Time.frameCount;
+        {
+            mUpdateFrame = Time.frameCount;
 
-			// Update each panel in order
-			for (int i = 0, imax = list.Count; i < imax; ++i)
-				list[i].UpdateSelf();
+            // Update each panel in order  
+            for (int i = 0, imax = list.Count; i < imax; ++i)
+                list[i].UpdateSelf();
 
-			int rq = 3000;
+            int rq = 3000;
 
-			// Update all draw calls, making them draw in the right order
-			for (int i = 0, imax = list.Count; i < imax; ++i)
-			{
-				UIPanel p = list[i];
+            // Update all draw calls, making them draw in the right order  
+            for (int i = 0, imax = list.Count; i < imax; ++i)
+            {
+                UIPanel p = list[i];
+                //slc begin        
+                if (p.renderQueue == RenderQueue.Automatic)
+                {
+                    p.startingRenderQueue = rq;
+                    p.UpdateDrawCalls();
+                    rq += p.drawCalls.Count + sortUIs.Count;
+                }
+                else if (p.renderQueue == RenderQueue.StartAt)
+                {
+                    p.UpdateDrawCalls();
+                    if (p.drawCalls.Count != 0)
+                        rq = Mathf.Max(rq, p.startingRenderQueue + p.drawCalls.Count + sortUIs.Count);
+                }
+                //slc end  
+                else // Explicit  
+                {
+                    p.UpdateDrawCalls();
+                    if (p.drawCalls.Count != 0)
+                        rq = Mathf.Max(rq, p.startingRenderQueue + 1);
+                }
+            }
+        }
+    }
 
-				if (p.renderQueue == RenderQueue.Automatic)
-				{
-					p.startingRenderQueue = rq;
-					p.UpdateDrawCalls();
-					rq += p.drawCalls.Count;
-				}
-				else if (p.renderQueue == RenderQueue.StartAt)
-				{
-					p.UpdateDrawCalls();
-					if (p.drawCalls.Count != 0)
-						rq = Mathf.Max(rq, p.startingRenderQueue + p.drawCalls.Count);
-				}
-				else // Explicit
-				{
-					p.UpdateDrawCalls();
-					if (p.drawCalls.Count != 0)
-						rq = Mathf.Max(rq, p.startingRenderQueue + 1);
-				}
-			}
-		}
-	}
+    /// <summary>
+    /// Update the panel, all of its widgets and draw calls.
+    /// </summary>
 
-	/// <summary>
-	/// Update the panel, all of its widgets and draw calls.
-	/// </summary>
-
-	void UpdateSelf ()
+    void UpdateSelf ()
 	{
 		mUpdateTime = RealTime.time;
 
@@ -1277,37 +1290,37 @@ public class UIPanel : UIRect
 		int count = 0;
 
 		if (mSortWidgets) SortWidgets();
+        //slc begin   
+        List<UIRenderSort> list = new List<UIRenderSort>();
+        list.AddRange(sortUIs);
+        for (int i = 0; i < widgets.Count; ++i)
+        {
+            UIWidget w = widgets[i];
 
-		for (int i = 0; i < widgets.Count; ++i)
-		{
-			UIWidget w = widgets[i];
+            if (w.isVisible && w.hasVertices)
+            {
+                Material mt = w.material;
+                Texture tx = w.mainTexture;
+                Shader sd = w.shader;
 
-			if (w.isVisible && w.hasVertices)
-			{
-				Material mt = w.material;
-				Texture tx = w.mainTexture;
-				Shader sd = w.shader;
+                bool isAddSortUI = false;
+                if (list.Count > 0)
+                {
+                    for (int u = 0; u < list.Count; u++)
+                    {
+                        if (list[i].depth < w.depth)
+                        {
+                            isAddSortUI = true;
+                            list[i].drawCallID = i;
+                            list.Remove(list[i]);
+                        }
+                    }
+                }
 
-				if (mat != mt || tex != tx || sdr != sd)
-				{
-					if (dc != null && dc.verts.size != 0)
-					{
-						drawCalls.Add(dc);
-						dc.UpdateGeometry(count);
-						dc.onRender = mOnRender;
-						mOnRender = null;
-						count = 0;
-						dc = null;
-					}
-
-					mat = mt;
-					tex = tx;
-					sdr = sd;
-				}
-
-				if (mat != null || sdr != null || tex != null)
-				{
-					if (dc == null)
+                if (mat != mt || tex != tx || sdr != sd || isAddSortUI == true)
+                {
+                    //slc end
+                    if (dc == null)
 					{
 						dc = UIDrawCall.Create(this, mat, tex, sdr);
 						dc.depthStart = w.depth;
@@ -1451,18 +1464,33 @@ public class UIPanel : UIRect
 
 		Quaternion rot = trans.rotation;
 		Vector3 scale = trans.lossyScale;
+        //slc begin    
+        int offset = 0;
+        for (int i = 0; i < drawCalls.Count; ++i)
+        {
+            UIDrawCall dc = drawCalls[i];
 
-		for (int i = 0; i < drawCalls.Count; ++i)
-		{
-			UIDrawCall dc = drawCalls[i];
+            Transform t = dc.cachedTransform;
+            t.position = pos;
+            t.rotation = rot;
+            t.localScale = scale;
+            if (sortUIs.Count > 0)
+            {
+                for (int u = 0; u < sortUIs.Count; u++)
+                {
 
-			Transform t = dc.cachedTransform;
-			t.position = pos;
-			t.rotation = rot;
-			t.localScale = scale;
+                    if (sortUIs[u].drawCallID == i)
+                    {
+                        sortUIs[u].renderQuene = startingRenderQueue + i + offset;
+                        sortUIs[u].FillDrawCall();
+                        offset += 1;
+                    }
+                }
+            }
+            dc.renderQueue = (renderQueue == RenderQueue.Explicit) ? startingRenderQueue : startingRenderQueue + i + offset;
 
-			dc.renderQueue = (renderQueue == RenderQueue.Explicit) ? startingRenderQueue : startingRenderQueue + i;
-			dc.alwaysOnScreen = alwaysOnScreen &&
+            //slc end  
+            dc.alwaysOnScreen = alwaysOnScreen &&
 				(mClipping == UIDrawCall.Clipping.None || mClipping == UIDrawCall.Clipping.ConstrainButDontClip);
 			dc.sortingOrder = mSortingOrder;
 			dc.clipTexture = mClipTexture;

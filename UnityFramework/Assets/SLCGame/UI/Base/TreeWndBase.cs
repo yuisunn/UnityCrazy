@@ -10,20 +10,7 @@ namespace SLCGame.Unity
         /// <summary>
         /// 所有子窗口
         /// </summary>
-        protected List<TreeWndBase> m_WinChilds;
-        protected bool isDontHide;
-        public bool IsDontHide
-        {
-            get
-            {
-                return isDontHide;
-            }
-
-            set
-            {
-                isDontHide = value;
-            }
-        }
+        protected List<TreeWndBase> m_WinChilds; 
 
         protected TreeWndBase RootWnd
         {
@@ -40,6 +27,12 @@ namespace SLCGame.Unity
 
         private TreeWndBase rootWnd;
 
+
+        public override void Init()
+        {
+            base.Init();
+            this.hideType = HideWndTypeEnum.Move;
+        }
         /// <summary>
         /// 隐藏全部子窗口
         /// </summary>
@@ -64,9 +57,7 @@ namespace SLCGame.Unity
         /// </summary>
         public override void HideWnd()
         {
-            base.HideWnd();
-            if (!IsDontHide)
-                U3DMod.SetActive(this.gameObject, false);
+            base.HideWnd(); 
             HideAllChildWnd();
         }
         /// <summary>

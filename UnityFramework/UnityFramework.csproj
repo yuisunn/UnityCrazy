@@ -84,6 +84,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UnityFramework.Plugins.csproj">
+      <Project>{E4B55A8A-5AEF-579D-470F-7D770A5B0DBA}</Project>
+      <Name>UnityFramework.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Game\ActionDefine.cs" />
     <Compile Include="Assets\Game\GameAction\ActionArenaList.cs" />
     <Compile Include="Assets\Laser.cs" />
@@ -552,6 +558,41 @@
     <Compile Include="Assets\Libs\NGUI\Scripts\UI\UITexture.cs" />
     <Compile Include="Assets\Libs\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\Libs\NGUI\Scripts\UI\UIViewport.cs" />
+    <Compile Include="Assets\Libs\NGUICustom\UIParticle.cs" />
+    <Compile Include="Assets\Libs\NGUICustom\UIRenderSort.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\RuntimeCoroutineStats.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\RuntimeCoroutineTracker.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTrackerDemo\CoroutineSpawner.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\CoroutineTrackerDemo\SampleRunner.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Scripts\Logging\Log.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Scripts\Logging\LogService.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Scripts\Logging\LogUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Scripts\UniqueString.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\Scripts\Yielders.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Client\NetClient.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Client\NetGuardTimer.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Client\NetManager.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Client\NetUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsCmd.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsCmdParsing.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsCmdUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsConst.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsFrameData.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsGeneric.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsLogPacket.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsProtocol.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Common\UsUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\Notifiers\UsEditorNotifier.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\PerfData\DataCollector.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\PerfData\MeshLut.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\PerfData\UsTextureUtil.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\UsDefaultServer.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\UsMain.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\UsMain_NetHandlers.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\UsNet.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\UsvConsole.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\UsvConsoleCmds.cs" />
+    <Compile Include="Assets\Libs\Tools\PerfAssist\PA_Common\usmooth\Runtime\utest.cs" />
     <Compile Include="Assets\SLCGame\Action\ActionBase.cs" />
     <Compile Include="Assets\SLCGame\Action\ActionFactory.cs" />
     <Compile Include="Assets\SLCGame\Action\ActionParam.cs" />
@@ -618,11 +659,14 @@
     <Compile Include="Assets\SLCGame\Tools\Unity\Timers.cs" />
     <Compile Include="Assets\SLCGame\Tools\Unity\U3DMod.cs" />
     <Compile Include="Assets\SLCGame\Tools\Unity\UnitySingleton.cs" />
+    <Compile Include="Assets\SLCGame\UI\Base\AnimateWnd.cs" />
     <Compile Include="Assets\SLCGame\UI\Base\TreeWndBase.cs" />
+    <Compile Include="Assets\SLCGame\UI\Base\UIContextBase.cs" />
     <Compile Include="Assets\SLCGame\UI\Base\UINWndClose.cs" />
     <Compile Include="Assets\SLCGame\UI\Base\UINWndTable.cs" />
     <Compile Include="Assets\SLCGame\UI\Base\UIObject.cs" />
     <Compile Include="Assets\SLCGame\UI\Base\UIWndBase.cs" />
+    <Compile Include="Assets\SLCGame\UI\UIDef.cs" />
     <Compile Include="Assets\SLCGame\UI\Window\UILoading.cs" />
     <Compile Include="Assets\SLCGame\UI\Window\UILogin.cs" />
     <Compile Include="Assets\SLCGame\UI\Window\UIMessageBox.cs" />
@@ -632,44 +676,6 @@
     <Compile Include="Assets\SLCGame\Unity\Component\U3DObject.cs" />
     <Compile Include="Assets\SLCGame\Unity\Component\U3DScene.cs" />
     <Compile Include="Assets\Test.cs" />
-    <Compile Include="Assets\skynet-client\ByteQueue.cs" />
-    <Compile Include="Assets\skynet-client\ClientLogin.cs" />
-    <Compile Include="Assets\skynet-client\ClientSocket.cs" />
-    <Compile Include="Assets\skynet-client\Crypt.cs" />
-    <Compile Include="Assets\skynet-client\Crypt_CSharp.cs" />
-    <Compile Include="Assets\skynet-client\Gate.cs" />
-    <Compile Include="Assets\skynet-client\PackageSocket.cs" />
-    <Compile Include="Assets\skynet-client\User.cs" />
-    <Compile Include="Assets\skynet-client\c2s.cs" />
-    <Compile Include="Assets\skynet-client\c2sProtocol.cs" />
-    <Compile Include="Assets\skynet-client\s2c.cs" />
-    <Compile Include="Assets\skynet-client\s2cProtocol.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\gen_example\BenchMark.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\gen_example\Member.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\gen_example\TestAll.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\gen_example\TestMap.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\gen_example\TestRpc.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\Package.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\ProtocolBase.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\ProtocolFunctionDictionary.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoPack.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoRpc.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoStream.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoTypeBase.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoTypeDeserialize.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoTypeFieldOP.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoTypeReader.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoTypeSerialize.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\src\SprotoTypeSize.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseBase.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseMap.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseRpc.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseSproto.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseSprotoPack.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseSprotoTypeDeserialize.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseSprotoTypeFieldOP.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseSprotoTypeSerialize.cs" />
-    <Compile Include="Assets\skynet-client\sproto-Csharp\testCase\TestCaseTestAll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Libs\JsonDotNet\ReadMe.txt" />
@@ -710,6 +716,7 @@
     <None Include="Assets\Libs\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\Libs\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
     <None Include="Assets\Libs\NGUI\Resources\Shaders\Unlit - Transparent Packed.shader" />
+    <None Include="Assets\Libs\Tools\PerfAssist\CoroutineTracker\Editor\GraphIt.shader" />
     <None Include="Assets\Libs\UIFrameWork\Editor\NGUITool\ReadMe.txt" />
     <None Include="Assets\Libs\UIFrameWork\Shaders\UI_ETC 1.shader" />
     <None Include="Assets\Libs\UIFrameWork\Shaders\UI_ETC 2.shader" />
@@ -736,7 +743,6 @@
     <None Include="Assets\SLCGame\Shader\StyleShader\Cartoon.shader" />
     <None Include="Assets\SLCGame\Shader\StyleShader\Hatching.shader" />
     <None Include="Assets\SLCGame\Shader\StyleShader\LowPolygon.shader" />
-    <None Include="Assets\skynet-client\Plugins\crypt\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

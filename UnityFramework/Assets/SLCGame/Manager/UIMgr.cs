@@ -14,32 +14,61 @@ namespace SLCGame.Unity
     /// </summary>
     public class UIMgr : Singleton<UIMgr>
     {
-        public GameObject uiRoot;
-        public GameObject hudRoot;
+        public delegate void WndHideByMove();
+        public WndHideByMove hideByMoveFun;
 
-        Dictionary<Type, UIWndBase> mWindowDic = new Dictionary<Type, UIWndBase>();
-        //处理缓存
-        Queue<Type> cachQueue;
+        private GameObject uiRoot;
+        public GameObject UiRoot
+        {
+            get
+            {
+                return uiRoot;
+            }
 
-        public int WIN_MAX = 10;
+            set
+            {
+                uiRoot = value;
+            }
+        }
+
+        //缓存整个界面
+        Dictionary<Type, UIWndBase> mWindowDic = new Dictionary<Type, UIWndBase>(); 
+        //缓存context
+        Dictionary<Type, ContextBase> mContextDic = new Dictionary<Type, ContextBase>();
 
 
-
+        Queue<Type> mWindowQueue;
+        Queue<Type> mContextQueue;
+        public int hideMax = 10;
+        public int contextMax = 10;
+          
         /// <summary>
-        /// 显示窗口
+        /// 显示窗口 
+        /// 1用缓存
+        /// 2用context数据
+        /// 3重写生成
         /// </summary>
         /// <returns></returns>
         public T ShowWindow<T>() where T : UIWndBase
         { 
             if (mWindowDic.ContainsKey(typeof(T)))
             {
-                mWindowDic[typeof(T)].Show(true); 
+                mWindowDic[typeof(T)].Show();
                 return mWindowDic[typeof(T)] as T;
+            }
+            else
+            {
+                T t = ResourceMgr.New<T>(string.Format(UIDef.PopDir, GetNameFromType(typeof(T)))); 
+                U3DMod.AddChild(UiRoot, t.gameObject);
+                RegisterWindow(t);
+
+                if (mContextDic.ContainsKey(typeof(T)))
+                    t.RefreshData(mContextDic[typeof(T)]);
+                else
+                    RegisterContext(typeof(T), t.RefreshData());
+                t.Show();
+                return t;
             } 
-            T t = ResourceMgr.New<T>(string.Format("Prefabs/Ui/Pop/{0}", GetNameFromType(typeof(T))));
-            U3DMod.AddChild(uiRoot, t.gameObject);
-            RegisterWindow(t);
-            return t;
         }
 
         /// <summary>
@@ -48,27 +77,47 @@ namespace SLCGame.Unity
         /// <returns></returns>
         public T GetWindow<T>() where T : UIWndBase
         {
-            if (mWindowDic.ContainsKey(typeof(T)))
-            {
-                return mWindowDic[typeof(T)] as T;
-            }
-            return null;
+            UIWndBase t;
+            mWindowDic.TryGetValue(typeof(T), out t); 
+            return t as T;
         }
 
-
         /// <summary>
-        /// 隐藏窗口
+        /// 获取窗口
         /// </summary>
         /// <returns></returns>
-        public void HideWindow<T>() where T : UIWndBase
+        public T GetContext<T>() where T : ContextBase
         {
-            if (mWindowDic.ContainsKey(typeof(T)))
-                mWindowDic[typeof(T)].Show(false);
+            ContextBase t;
+            mContextDic.TryGetValue(typeof(T), out t); 
+            return t as T;
         }
 
 
         /// <summary>
-        /// 隐藏窗口
+        /// 隐藏窗口 指定方法
+        /// </summary>
+        /// <returns></returns>
+        public void HideWindow<T>(HideWndTypeEnum type) where T : UIWndBase
+        {
+            UIWndBase wnd =null;
+            if (mWindowDic.TryGetValue(typeof(T), out wnd))
+                wnd.HideWnd(type); 
+        }
+
+        /// <summary>
+        /// 使用默认或设定好的
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public void HideWindow<T>() where T : UIWndBase
+        {
+            UIWndBase wnd = null;
+            if (mWindowDic.TryGetValue(typeof(T), out wnd))
+                wnd.HideWnd();
+        }
+
+        /// <summary>
+        /// 隐藏全部窗口 默认或设定的方式
         /// </summary>
         /// <param name="wnd"></param>
         /// <returns></returns>
@@ -78,120 +127,103 @@ namespace SLCGame.Unity
             {
                 if (mWindowDic[t] == wnd)
                 {
-                    mWindowDic[t].Show(false);
+                    mWindowDic[t].HideWnd();
                     break;
                 }
             }
         }
+         
         /// <summary>
-        /// 增加了缓存
+        /// 注册窗口 保存缓存
         /// </summary>
-        /// <param name="wnd"></param>
-
+        /// <param name="wnd"></param> 
         void RegisterWindow(UIWndBase wnd)
-        { 
-            wnd.Show();
+        {   
             Type t = wnd.GetType();
-            mWindowDic[t] = wnd;
-            wnd.DestroyWndHandler = (wd, e) => { RemoveWindow(wd); };
-
-            if (cachQueue != null)
+            mWindowDic.Add(t,wnd);
+            mContextDic.Add(t, wnd.m_Context);
+              
+            if (mWindowQueue != null)
             {
-                cachQueue.Enqueue(t);
-                if (mWindowDic.Count > WIN_MAX)
+                mWindowQueue.Enqueue(t);
+                if (mWindowQueue.Count > hideMax)
                 {
-                    Type ch = cachQueue.Dequeue();
-                    DestroyWindow(mWindowDic[ch]);
+                    Type type = mWindowQueue.Dequeue();
+                    mWindowDic.Remove(type);
+                    DestroyWindow(type); 
+
                 }
-            }
-            else
-            {
-                cachQueue = new Queue<Type>(); 
-            }
+            } 
+            // wnd.DestroyWndHandler = (wd, e) => { RemoveWindow(wd); };
         }
-
-
         /// <summary>
-        /// 从字典移除窗口
+        /// 注册上下文
         /// </summary>
-        /// <returns></returns>
-        public UIWndBase RemoveWindow<T>() where T : UIWndBase
-        {
-            UIWndBase wnd = null;
-            if (mWindowDic.ContainsKey(typeof(T)))
-            {
-                wnd = mWindowDic[typeof(T)];
-                mWindowDic.Remove(typeof(T));
-            }
-            return wnd;
-        }
-
-
-        /// <summary>
-        /// 从字典移除窗口
-        /// </summary>
+        /// <param name="t"></param>
         /// <param name="wnd"></param>
-        /// <returns></returns>
-        public UIWndBase RemoveWindow(UIWndBase wnd)
+        public void RegisterContext(Type t, ContextBase wnd)
         {
-            UIWndBase _wnd = null;
-            foreach (Type t in mWindowDic.Keys.ToArray())
+            if (mContextQueue != null)
             {
-                if (mWindowDic[t] == wnd)
+                mContextQueue.Enqueue(t);
+                if (mContextQueue.Count > contextMax)
                 {
-                    _wnd = mWindowDic[t];
-                    mWindowDic.Remove(t);
-                    break;
+                    Type type = mContextQueue.Dequeue();
+                    mContextDic.Remove(type); 
                 }
             }
-            return _wnd;
         }
-
 
         /// <summary>
-        /// 销毁窗口
+        /// 销毁context
         /// </summary>
-        /// <returns></returns>
-        public void DestroyWindow<T>() where T : UIWndBase
+        /// <param name="t"></param>
+        public void DestoryContext(Type t)
         {
-            if (mWindowDic.ContainsKey(typeof(T)))
-            {
-                UIWndBase wnd = mWindowDic[typeof(T)];
-                RemoveWindow<T>();
-                wnd.Destroy();
-            }
+            mContextDic.Remove(t);
         }
-
 
         /// <summary>
         /// 销毁窗口
         /// </summary>
         /// <param name="wnd"></param>
         /// <returns></returns>
-        public void DestroyWindow(UIWndBase wnd)
+        public void DestroyWindow(Type t)
+        {  
+           mWindowDic[t].Destroy();
+           if(mWindowDic[t].hideType == HideWndTypeEnum.Destory)
+           {
+                DestoryContext(t);
+           } 
+        }
+
+        /// <summary>
+        /// 销毁窗口
+        /// </summary>
+        /// <param name="wnd"></param>
+        /// <returns></returns>
+        public void DestoryWindow<T>() 
         {
-            foreach (Type t in mWindowDic.Keys.ToArray())
+            Type t = typeof(T);
+            mWindowDic[t].Destroy();
+            if (mWindowDic[t].hideType == HideWndTypeEnum.Destory)
             {
-                if (mWindowDic[t] == wnd)
-                {
-                    mWindowDic.Remove(t);
-                    wnd.Destroy();
-                    break;
-                }
+                DestoryContext(t);
             }
         }
 
 
         /// <summary>
-        /// 销毁所有窗口
+        /// 销毁所有窗口 和context
         /// </summary>
         /// <returns></returns>
         public void ClearAllWindow()
         {
             foreach (Type t in mWindowDic.Keys.ToArray())
             {
-                mWindowDic[t].Destroy();
+                mWindowDic[t].Destroy(); 
             }
+            mContextDic.Clear();
             mWindowDic.Clear();
         }
 

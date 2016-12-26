@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 namespace SLCGame.Unity
 {
-    public class UIObject : U3DObject
-    { 
+    public class UIObject : MonoBehaviour
+    {  
         //protected void ListenOnSubmit(GameObject obj, UIEventListener.VoidDelegate callback)
         //{
         //    UIEventListener.Get(obj).onSubmit = callback;
