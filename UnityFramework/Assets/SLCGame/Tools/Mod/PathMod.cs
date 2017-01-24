@@ -7,6 +7,7 @@ namespace SLCGame.Unity
 
     public class PathMod
     {
+        public static readonly string LuaUI = "View/";
 
         /// <summary>
         /// 获取文件无后缀名称
@@ -27,6 +28,52 @@ namespace SLCGame.Unity
 
             return fullnameOrPath.Substring(start, end - start);
         }
+
+        /// <summary>
+        /// 应用程序内容路径
+        /// </summary>
+        public static string AppContentPath()
+        {
+            string path = string.Empty;
+            switch (Application.platform)
+            {
+                case RuntimePlatform.Android:
+                    path = "jar:file://" + Application.dataPath + "!/assets/";
+                    break;
+                case RuntimePlatform.IPhonePlayer:
+                    path = Application.dataPath + "/Raw/";
+                    break;
+                default:
+                    path = Application.dataPath + "/StreamingAssets/";
+                    break;
+            }
+            return path;
+        }
+
+        /// <summary>
+        /// 取得数据存放目录
+        /// </summary>
+        public static string DataPath
+        {
+            get
+            {
+                string game = AppConst.AppName.ToLower();
+                if (Application.isMobilePlatform)
+                {
+                    return Application.persistentDataPath + "/" + game + "/";
+                }
+                if (Application.platform == RuntimePlatform.WindowsPlayer)
+                {
+                    return Application.streamingAssetsPath + "/";
+                }
+                if (Application.isEditor)
+                {
+                    return Application.dataPath + "/StreamingAssets/";
+                }
+                return "c:/" + game + "/";
+            }
+        }
+
 
 
         /// <summary>

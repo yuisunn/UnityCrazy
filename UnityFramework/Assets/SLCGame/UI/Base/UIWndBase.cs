@@ -11,7 +11,7 @@ namespace SLCGame.Unity
         Context = 2,
         Destory =3
     }
-    public class UIWndBase : UIObject 
+    public class UIWndBase : UILuaObject 
     {
         public HideWndTypeEnum hideType; 
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SLCGame.Unity;
 
 namespace SLCGame
 {
@@ -20,7 +21,26 @@ namespace SLCGame
         { }
         public void InitializeOptionValues()
         {
-        } 
+        }
+
+        public void Awake()
+        { 
+            InitializeMode();
+            InitializeWindowTitle();
+            InitializeOptionValues();
+            InitializeGame();
+            InitializeUnity();
+        }
+
+        public void HotUpdate()
+        {
+            HotUpdateMgr.Instance.CheckExtractResource();
+        }
+
+        public void Start()
+        {
+            HotUpdate();
+        }
         // Update is called once per frame
         void Update()
         {

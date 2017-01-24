@@ -4,9 +4,60 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 using SLCGame.Tools;
+using System.IO;
 
 namespace SLCGame.Unity
 {
+    public class BundleCache
+    {
+        AssetBundle m_AssetBundle;
+        public float m_fTimer = 0;
+        public float m_fWaitTime = 5;
+        public bool m_isRelease;//是否执行释放
+        public bool m_isAssetRelease;//是否销毁asset load的对象 
+        public bool m_isHaveMirror;
+        public AssetBundle assetBundle
+        {
+            get
+            {
+                m_fTimer = 0;
+                return m_AssetBundle;
+            }
+        }
+
+        public Object LoadAsset(string name)
+        {
+            return m_AssetBundle.LoadAsset(name);
+        }
+
+        public BundleCache(AssetBundle ab)
+        {
+            m_isRelease = true;
+            m_isAssetRelease = false;
+            m_AssetBundle = ab;
+            m_isHaveMirror = true;
+        }
+
+        public void Release()
+        {
+            if (m_isRelease && m_AssetBundle != null)
+            {
+                m_AssetBundle.Unload(m_isAssetRelease);
+            }
+        } 
+
+        public bool Tick()
+        {
+            m_fTimer += Time.deltaTime;
+            return m_fTimer < m_fWaitTime;
+        }
+
+        public void Unload(bool unloadallobjects)
+        {
+            assetBundle.Unload(unloadallobjects);
+        }
+    }
+
     /// <summary>
     /// asset 的加载 
     /// 功能没有抽象解耦出来
@@ -23,51 +74,7 @@ namespace SLCGame.Unity
 
         public Dictionary<string, BundleCache> mAssetBundleDic = new Dictionary<string, BundleCache>();
 
-        public class BundleCache
-        {
-            AssetBundle mAssetBundle;
-            public float timer = 0;
-            public float waitTime = 5;
-            public bool m_isRelease;//是否执行释放
-            public bool m_isAssetRelease ;//是否销毁asset load的对象 
-            public bool m_isHaveMirror;
-            public AssetBundle assetBundle
-            {
-                get
-                {
-                    timer = 0;
-                    return mAssetBundle;
-                }
-            }
 
-            public BundleCache(AssetBundle ab)
-            {
-                m_isRelease = true;
-                m_isAssetRelease = false;
-                mAssetBundle = ab;
-                m_isHaveMirror = true;
-            }
-
-            public void Release()
-            {
-                if (m_isRelease && mAssetBundle!=null)
-                {
-                    mAssetBundle.Unload(m_isAssetRelease);
-                }
-
-            }
-
-            public bool Tick()
-            {
-                timer += Time.deltaTime;
-                return timer < waitTime;
-            }
-
-            public void Unload(bool unloadallobjects)
-            {
-                assetBundle.Unload(unloadallobjects);
-            }
-        }
 
         /// <summary>
         /// 通过 assetbundle 读取单个gameobject
@@ -75,31 +82,56 @@ namespace SLCGame.Unity
         /// <param name="filename"></param>
         /// <param name="sourcename"></param>
         /// <param name="cb"></param>
-        /// <param name="forceloadAsyn"></param>
- 
+        /// <param name="forceloadAsyn"></param> 
 
-        public void LoadAudio(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
-        {
-            string path = PathMod.AssetPath(string.Format("Audio/{0}", filename));
-            LoadAsset(path, sourcename, cb, forceloadAsyn);
-        }
-        public void LoadConfig(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
-        {
-            string path = PathMod.AssetPath(string.Format("Config/{0}", filename));
-            LoadAsset(path, sourcename, cb, forceloadAsyn);
-        }
-        public void LoadConfig(string filename,UnityAction<AssetBundle> cb)
-        {
-            string path = PathMod.AssetPath(string.Format("Config/{0}", filename));
-            LoadAsset(path,cb, false);
-        }
 
-        public void LoadEffect(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
+        //public void LoadAudio(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
+        //{
+        //    string path = PathMod.AssetPath(string.Format("Audio/{0}", filename));
+        //    LoadAsset(path, sourcename, cb, forceloadAsyn);
+        //}
+        //public void LoadConfig(string filename, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
+        //{
+        //    string path = PathMod.AssetPath(string.Format("Config/{0}", filename));
+        //    LoadAsset(path, sourcename, cb, forceloadAsyn);
+        //}
+        //public void LoadConfig(string filename,UnityAction<AssetBundle> cb)
+        //{
+        //    string path = PathMod.AssetPath(string.Format("Config/{0}", filename));
+        //    LoadAsset(path,cb, false);
+        //}
+
+        public void LoadEffect(string filename, string sourcename)
         {
             string path = PathMod.AssetPath(string.Format("Effect/{0}", filename));
-            LoadAsset(path, sourcename, cb, forceloadAsyn);
-        } 
- 
+            LoadAsset(path, sourcename);
+        }
+         
+        public BundleCache LoadUIAssetBundle(string name)
+        {
+            LoadAsset(name);
+            return mAssetBundleDic[name];
+        }
+
+
+        public GameObject LoadUIPerfab(string sourcename) 
+        {
+            string path = PathMod.DataPath + string.Format("{0}", sourcename.ToLower());
+            return LoadAsset(path, sourcename) as GameObject;
+        }
+
+        public AssetBundle LoadAssetMemory(string name)
+        {
+            byte[] stream = null;
+            AssetBundle bundle = null;
+            string uri = name.ToLower();
+            stream = File.ReadAllBytes(uri); 
+            bundle = AssetBundle.LoadFromFile(name);
+            AddAssetBundle(name, bundle);
+            new BundleCache(bundle);
+            return bundle; 
+        }
+
 
         /// <summary>
         /// 加载Asset资源
@@ -108,46 +140,44 @@ namespace SLCGame.Unity
         /// <param name="sourcename">资源名</param>
         /// <param name="cb">回调函数</param>
         /// <returns></returns>
-        void LoadAsset(string path, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = true)
+        public Object LoadAsset(string path, string sourcename)
         {
-            if (mAssetBundleDic.ContainsKey(path))
+            Object obj = null;
+            AssetBundle ab = GetAssetBundle(path);
+            if (ab != null)
             {
-                AssetBundle ab = GetAssetBundle(path);
-                if (forceloadAsyn)
-                {
-                    GameMain.Instance.StartCoroutine(LoadSourceEnumerator(ab, sourcename, cb));
-                }
-                else
-                {
-                    Object go = ab.LoadAsset(sourcename);
-                    if (go != null)
-                    {
-                        cb(go);
-                    }
-                    else
-                    {
-                        DebugMod.LogError("can't get assetresource from " + path);
-                    }
-                }
-
+                obj = ab.LoadAsset(sourcename); 
             }
             else
             {
-                GameMain.Instance.StartCoroutine(LoadBundleEnumerator(path, sourcename, cb, forceloadAsyn));
+                ab = LoadAssetMemory(path);
+                AddAssetBundle(path, ab);
+                obj = ab.LoadAsset(sourcename);
+
+                if (obj == null)
+                {
+                    DebugMod.LogError("can't get assetresource object null from " + path);
+                } 
             }
+            return obj;
         }
 
-        void LoadAsset(string path,  UnityAction<AssetBundle> cb, bool managercharge = true)
+        public AssetBundle LoadAsset(string path)
         {
+            AssetBundle ab = null;
             if (mAssetBundleDic.ContainsKey(path))
             {
-                AssetBundle ab = GetAssetBundle(path); ;
-                cb(ab);
+                ab = GetAssetBundle(path); 
             }
             else
             {
-                GameMain.Instance.StartCoroutine(LoadBundleEnumerator(path, cb, managercharge));
+                ab = LoadAssetMemory(path);
+                AddAssetBundle(path, ab);
+                if(ab == null)
+                    DebugMod.LogError("can't get AssetBundle null from " + path);
+                //GameMain.Instance.StartCoroutine(LoadBundleEnumerator(path, cb, managercharge));
             }
+            return ab;
         }
 
 
@@ -158,24 +188,24 @@ namespace SLCGame.Unity
         /// <param name="sourcename">资源名</param>
         /// <param name="cb">回调</param>
         /// <returns></returns>
-        IEnumerator LoadSourceEnumerator(AssetBundle ab, string sourcename, UnityAction<Object> cb)
-        {
-            AssetBundleRequest abr = ab.LoadAssetAsync(sourcename);
-            Debug.Log("Source AssetBundleRequest");
-            yield return abr;
-            if (abr.isDone)
-            {
-                if (abr.asset != null)
-                {
-                    Debug.Log("Source cb");
-                    cb(abr.asset);
-                }
-                else
-                {
-                    DebugMod.LogError("Can't find res " + sourcename + "in assetbundle");
-                }
-            }
-        }
+        //IEnumerator LoadSourceEnumerator(AssetBundle ab, string sourcename, UnityAction<UnityEngine.Object> cb)
+        //{
+        //    AssetBundleRequest abr = ab.LoadAssetAsync(sourcename);
+        //    Debug.Log("Source AssetBundleRequest");
+        //    yield return abr;
+        //    if (abr.isDone)
+        //    {
+        //        if (abr.asset != null)
+        //        {
+        //            Debug.Log("Source cb");
+        //            cb(abr.asset);
+        //        }
+        //        else
+        //        {
+        //            DebugMod.LogError("Can't find res " + sourcename + "in assetbundle");
+        //        }
+        //    }
+        //}
 
 
         /// <summary>
@@ -185,35 +215,35 @@ namespace SLCGame.Unity
         /// <param name="sourcename">资源名</param>
         /// <param name="cb">回调</param>
         /// <returns></returns>
-        IEnumerator LoadBundleEnumerator(string path, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
-        {
-            using (WWW www = new WWW(path))
-            {
-                yield return www;
-                if (www.isDone)
-                {
-                    if (mAssetBundleDic.ContainsKey(path))
-                    {
-                        LoadAsset(path, sourcename, cb, forceloadAsyn);
-                        yield break;
-                    }
+        //IEnumerator LoadBundleEnumerator(string path, string sourcename, UnityAction<Object> cb, bool forceloadAsyn = false)
+        //{
+        //    using (WWW www = new WWW(path))
+        //    {
+        //        yield return www;
+        //        if (www.isDone)
+        //        {
+        //            if (mAssetBundleDic.ContainsKey(path))
+        //            {
+        //                LoadAsset(path, sourcename, cb, forceloadAsyn);
+        //                yield break;
+        //            }
 
-                    AssetBundle ab = www.assetBundle;
-                    if (null == ab)
-                    {
-                        DebugMod.LogError("www.assetBundle is null when load:" + path);
-                        yield break;
-                    }
+        //            AssetBundle ab = www.assetBundle;
+        //            if (null == ab)
+        //            {
+        //                DebugMod.LogError("www.assetBundle is null when load:" + path);
+        //                yield break;
+        //            }
 
-                    AddAssetBundle(path, ab);
-                    LoadAsset(path, sourcename, cb, forceloadAsyn);
-                }
-                else
-                {
-                    DebugMod.LogError(www.error);
-                }
-            }
-        }
+        //            AddAssetBundle(path, ab);
+        //            LoadAsset(path, sourcename, cb, forceloadAsyn);
+        //        }
+        //        else
+        //        {
+        //            DebugMod.LogError(www.error);
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// 加载AssetBundle
@@ -222,43 +252,43 @@ namespace SLCGame.Unity
         /// <param name="sourcename">资源名</param>
         /// <param name="cb">回调</param>
         /// <returns></returns>
-        IEnumerator LoadBundleEnumerator(string path, UnityAction<AssetBundle> cb, bool managercharge = true)
-        {
-            using (WWW www = new WWW(path))
-            {
-                yield return www;
-                if (www.isDone)
-                {
-                    AssetBundle ab = www.assetBundle;
-                    if (null == ab)
-                    {
-                        DebugMod.LogError("www.assetBundle is null when load:" + path);
-                        yield break;
-                    }
-                    if (managercharge)
-                    {
-                        AddAssetBundle(path, ab);
-                        LoadAsset(path, cb);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            cb(ab);
-                        }
-                        catch
-                        {
-                            DebugMod.LogError("Error occored in LoadBundleEnumerator callback delegate");
-                        }
-                    }
+        //IEnumerator LoadBundleEnumerator(string path, UnityAction<AssetBundle> cb, bool managercharge = true)
+        //{
+        //    using (WWW www = new WWW(path))
+        //    {
+        //        yield return www;
+        //        if (www.isDone)
+        //        {
+        //            AssetBundle ab = www.assetBundle;
+        //            if (null == ab)
+        //            {
+        //                DebugMod.LogError("www.assetBundle is null when load:" + path);
+        //                yield break;
+        //            }
+        //            if (managercharge)
+        //            {
+        //                AddAssetBundle(path, ab);
+        //                LoadAsset(path, cb);
+        //            }
+        //            else
+        //            {
+        //                try
+        //                {
+        //                    cb(ab);
+        //                }
+        //                catch
+        //                {
+        //                    DebugMod.LogError("Error occored in LoadBundleEnumerator callback delegate");
+        //                }
+        //            }
                         
-                }
-                else
-                {
-                    DebugMod.LogError(www.error);
-                }
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            DebugMod.LogError(www.error);
+        //        }
+        //    }
+        //}
 
 
         /// <summary>

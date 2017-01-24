@@ -15,7 +15,7 @@ namespace SLCGame
         /// <summary>
         /// 通过 LogicActionDefine 枚举生成 action 模板
         /// </summary>
-        [MenuItem("Tools/Build All Logic Action")]
+        [MenuItem("SLCGame/Build All Logic Action")]
         public static void MakeActionList()
         {
             Type typ = typeof(ActionDefine);

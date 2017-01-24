@@ -49,7 +49,7 @@ namespace SLCGame.Unity
         /// 3重写生成
         /// </summary>
         /// <returns></returns>
-        public T ShowWindow<T>() where T : UIWndBase
+        public T ShowWindow<T>(GameObject root=null) where T : UIWndBase
         { 
             if (mWindowDic.ContainsKey(typeof(T)))
             {
@@ -58,8 +58,14 @@ namespace SLCGame.Unity
             }
             else
             {
-                T t = ResourceMgr.New<T>(string.Format(UIDef.PopDir, GetNameFromType(typeof(T)))); 
-                U3DMod.AddChild(UiRoot, t.gameObject);
+                //待修改
+                GameObject obj = AssetBundleMgr.Instance.LoadUIPerfab(GetNameFromType(typeof(T))); 
+                if (root == null)
+                    U3DMod.AddChild(UiRoot, obj);
+                else
+                    U3DMod.AddChild(root, obj);
+                T t = obj.AddComponent<T>();
+                t.OnInit();
                 RegisterWindow(t);
 
                 if (mContextDic.ContainsKey(typeof(T)))

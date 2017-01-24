@@ -1,3 +1,5 @@
-/.vs
-/Library
-/obj
+ProjectSettings/
+Library/
+Library/ShaderCache/
+bin/
+

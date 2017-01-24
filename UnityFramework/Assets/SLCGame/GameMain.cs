@@ -12,15 +12,20 @@ namespace SLCGame
 {
     public class GameMain : UnitySingleton<GameMain>
     {
+        public static GameObject GlobalObject
+        {
+            get;
+            private set;
+        }
 
-        private static Threader _frmworkThreader = new Threader();
-        private static bool _appExit = false;
-        private Queue<LogicAction> m_queueLogicAction = new Queue<LogicAction>();
-
+        private static Threader m_FrmworkThreader = new Threader();
+        private static bool m_AppExit = false;
+        private Queue<LogicAction> m_QueueLogicAction = new Queue<LogicAction>();
+         
 
         public void Awake()
         {
-
+            GlobalObject = gameObject; 
         }
 
         public void OnApplicationPause()
@@ -34,10 +39,13 @@ namespace SLCGame
 
         public void Init()
         {
+            GlobalObject = gameObject;
             try
             {
                 //创建逻辑线程
                 DebugMod.Log("GameMain Init");
+                LuaScriptMgr.Instance.Init();
+                LuaScriptMgr.Instance.InitStart();
                 //Thread t = new Thread(new ParameterizedThreadStart(ThreadProc));
                 //t.Start(this);
                 //Thread.Sleep(0);
@@ -54,7 +62,7 @@ namespace SLCGame
             try
             {
                 DequueLogicAction();
-                _frmworkThreader.Update();
+                m_FrmworkThreader.Update();
             }
             catch (Exception ex)
             {
@@ -71,7 +79,7 @@ namespace SLCGame
                 long prevTick = DateTime.Now.Ticks;
                 if (null != param)
                 {
-                    while (!_appExit)
+                    while (!m_AppExit)
                     {
                         long nowTick = DateTime.Now.Ticks;
                         long elapseTick = nowTick - prevTick;
@@ -91,6 +99,11 @@ namespace SLCGame
             }
         }
 
+        public void FileCkeckEnd()
+        {
+
+        }
+
         public void Update()
         {
             DequueLogicAction();
@@ -107,9 +120,9 @@ namespace SLCGame
                 action.ActionId = (int)actionType;
                 action.ActParam = param;
 
-                lock (m_queueLogicAction)
+                lock (m_QueueLogicAction)
                 {
-                    m_queueLogicAction.Enqueue(action);
+                    m_QueueLogicAction.Enqueue(action);
                 }
                 return true;
             }
@@ -128,10 +141,10 @@ namespace SLCGame
                 do
                 {
                     action = null;
-                    lock (m_queueLogicAction)
+                    lock (m_QueueLogicAction)
                     {
-                        if (0 < m_queueLogicAction.Count)
-                            action = m_queueLogicAction.Dequeue();//移除并返回栈顶数据
+                        if (0 < m_QueueLogicAction.Count)
+                            action = m_QueueLogicAction.Dequeue();//移除并返回栈顶数据
                     }
                     if (null != action)
                         action.ProcessAction();
@@ -141,6 +154,13 @@ namespace SLCGame
             {
                 DebugMod.LogException(ex);
             }
+        }
+
+        protected void OnDestroy()
+        {
+            if(LuaScriptMgr.Instance!=null)
+                LuaScriptMgr.Instance.Destroy();
+            AssetBundleMgr.Instance.ClearAllAssetBundles(); 
         }
 
     }

@@ -9,13 +9,13 @@ namespace SLCGame.Tools.Unity
     {
 
 
-        public static T New<T>( string name = null ) where T : Component
+        public static T New<T>(string name = null) where T : Component
         {
             string goname = name == null ? typeof(T).ToString() : name;
             GameObject go = new GameObject(goname);
             T t = go.AddComponent<T>();
             return t;
-        } 
+        }
 
         public static T Find<T>() where T : Component
         {
@@ -29,34 +29,34 @@ namespace SLCGame.Tools.Unity
             return go;
         }
 
-        public static GameObject FindChild(Transform transform, string childname,bool lowercompare = true)
+        public static GameObject FindChild(Transform transform, string childname, bool lowercompare = true)
         {
             if (null == transform)
-			{
+            {
                 DebugMod.LogError("transform is null in FindChild");
                 return null;
-			}
+            }
 
             int totalChildCount = transform.childCount;
-			for (int i = 0; i < totalChildCount; i++)
-			{
+            for (int i = 0; i < totalChildCount; i++)
+            {
                 string name = transform.GetChild(i).gameObject.name;
-                if ((lowercompare?name.ToLowerInvariant():name) == childname.ToLowerInvariant())
-				{
+                if ((lowercompare ? name.ToLowerInvariant() : name) == childname.ToLowerInvariant())
+                {
                     return transform.GetChild(i).gameObject;
-				}
-			}
-			
-			for (int i = 0; i < totalChildCount; i++)
-			{
+                }
+            }
+
+            for (int i = 0; i < totalChildCount; i++)
+            {
                 GameObject go = FindChild(transform.GetChild(i), childname);
-				if (null != go)
-				{
-					return go;
-				}
-			}
-			
-			return null;
+                if (null != go)
+                {
+                    return go;
+                }
+            }
+
+            return null;
         }
 
         public static GameObject Clone(GameObject sample)
@@ -64,7 +64,7 @@ namespace SLCGame.Tools.Unity
             return Clone<GameObject>(sample);
         }
 
-        public static T Clone<T>(Object sample) where T:Object
+        public static T Clone<T>(Object sample) where T : Object
         {
             if (sample == null)
             {
@@ -74,23 +74,30 @@ namespace SLCGame.Tools.Unity
             return GameObject.Instantiate(sample) as T;
         }
 
-        public static T GetComponent<T>(GameObject go) where T:Component
+        public static T GetComponent<T>(GameObject go) where T : Component
         {
-            if(go == null)
+            if (go == null)
             {
                 DebugMod.LogError("gameobject is null");
             }
 
             T t = go.GetComponent<T>();
-            if(t == null)
+            if (t == null)
             {
                 t = go.AddComponent<T>();
             }
             return t;
         }
 
-        public static void AddChild(Object parent, Object child, bool usechildoriginaltransform = false)
+        public static void AddChild(GameObject parent, GameObject child)
         {
+            child.transform.parent = parent.transform;
+
+        }
+         
+
+        public static void AddChild(Object parent, Object child, bool usechildoriginaltransform = false)
+        { 
             if (child == null)
             {
                 DebugMod.LogError("child is null in:" + MethodBase.GetCurrentMethod().Name);
