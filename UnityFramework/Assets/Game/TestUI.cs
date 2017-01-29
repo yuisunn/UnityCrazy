@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SLCGame.Unity;
 
-public class TestPanel : UIWndBase { 
+public class TestUI : UIWndBase { 
 	// Use this for initialization
 	void Awake () {
         base.Awake();

@@ -5,6 +5,9 @@ using LuaInterface;
 
 using BindType = ToLuaMenu.BindType;
 using System.Reflection;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public static class CustomSettings
 {
@@ -50,8 +53,22 @@ public static class CustomSettings
         //_GT(typeof(TestExport.Space)),
         //-------------------------------------------------------------------        
                 
-        _GT(typeof(Debugger)).SetNameSpace(null),        
+        _GT(typeof(Debugger)).SetNameSpace(null),
 
+//ugui
+     _GT(typeof(Resources)),
+     _GT(typeof(Button)),
+     _GT(typeof(Button.ButtonClickedEvent)),
+     _GT(typeof(UnityEventBase)),
+     _GT(typeof(UnityEvent)),
+     _GT(typeof(DelegateFactory)),
+     _GT(typeof(Text)),
+     _GT(typeof(MaskableGraphic)),
+     _GT(typeof(Graphic)),
+     _GT(typeof(UIBehaviour)),
+     _GT(typeof(Image)),
+     _GT(typeof(SpriteRenderer)), 
+ 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),
         _GT(typeof(DG.Tweening.Tween)).SetBaseType(typeof(System.Object)).AddExtendType(typeof(DG.Tweening.TweenExtensions)),

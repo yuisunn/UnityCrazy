@@ -4,6 +4,7 @@ using UnityEngine;
 using LuaInterface;
 using System;
 using SLCGame.Unity;
+using UnityEngine.UI;
 
 namespace SLCGame.Unity
 {
@@ -13,8 +14,8 @@ namespace SLCGame.Unity
     public class LuaBehaviour : MonoBehaviour
     {
         private string m_Data = null;
-        private BundleCache m_Bundle = null;
-        private List<LuaFunction> m_Buttons = new List<LuaFunction>();
+        private BundleCache m_Bundle = null; 
+        private Dictionary<string, LuaFunction> m_Buttons = new Dictionary<string, LuaFunction>();
 
         private LuaFunction m_AwakeFunc = null;
         private LuaFunction m_UpdateFunc = null;
@@ -25,32 +26,37 @@ namespace SLCGame.Unity
         public void OnInit(string text = null)
         {
             m_Data = text;
+            m_Buttons = new Dictionary<string, LuaFunction>();
             InitAssetBundle();
-            InitLua();
+            InitLua(); 
             DebugMod.Log("OnInit---->>>" + name + " text:>" + text);
         }
 
         public void InitAssetBundle()
         { 
-            m_Bundle = AssetBundleMgr.Instance.LoadUIAssetBundle(this.gameObject.name);
+            //m_Bundle = AssetBundleMgr.Instance.LoadUIAssetBundle(this.gameObject.name);
         }
 
         public void InitLua()
         {
-            LuaScriptMgr.Instance.DoFile(PathMod.LuaUI + this.gameObject.name);
-        }
-
-        protected void Awake()
-        {
+            LuaScriptMgr.Instance.DoFile(PathMod.LuaUI + this.gameObject.name); 
             m_AwakeFunc = GetLuaFunction("Awake");
             m_UpdateFunc = GetLuaFunction("Update");
             m_LateUpdateFunc = GetLuaFunction("LateUpdate");
             m_FixedUpdateFunc = GetLuaFunction("FixedUpdate");
             m_LevelLoaded = GetLuaFunction("OnLevelLoaded");
-            if (m_AwakeFunc != null)
+        }
+
+        protected void Awake()
+        {
+            if (m_AwakeFunc == null)
             {
-                m_AwakeFunc.Call(gameObject);
+                InitLua();
             }
+            m_AwakeFunc.BeginPCall();
+            m_AwakeFunc.PushObject(this.gameObject);
+            m_AwakeFunc.PCall();
+            m_AwakeFunc.EndPCall();
         }
 
         public void Start()
@@ -112,12 +118,67 @@ namespace SLCGame.Unity
             return LuaScriptMgr.Instance.CallMethod(module, func, args);  
         }
 
+
+        protected void OnClick()
+        {
+            CallMethod(name, "OnClick");
+        }
+
+        protected void OnClickEvent(GameObject go)
+        {
+            CallMethod(name, "OnClick", go);
+        }
+        /// <summary>
+        /// 添加单击事件
+        /// </summary>
+        public void AddClick(GameObject go, LuaFunction luafunc)
+        {
+            if (go == null || luafunc == null) return;
+            m_Buttons.Add(go.name, luafunc);
+            go.GetComponent<Button>().onClick.AddListener(
+                delegate () {
+                    luafunc.Call(go);
+                }
+            );
+        }
+
+        /// <summary>
+        /// 删除单击事件
+        /// </summary>
+        /// <param name="go"></param>
+        public void RemoveClick(GameObject go)
+        {
+            if (go == null) return;
+            LuaFunction luafunc = null;
+            if (m_Buttons.TryGetValue(go.name, out luafunc))
+            {
+                luafunc.Dispose();
+                luafunc = null;
+                m_Buttons.Remove(go.name);
+            }
+        }
+
+        /// <summary>
+        /// 清除单击事件
+        /// </summary>
+        public void ClearClick()
+        {
+            foreach (var de in m_Buttons)
+            {
+                if (de.Value != null)
+                {
+                    de.Value.Dispose();
+                }
+            }
+            m_Buttons.Clear();
+        }
+
         protected void OnDestroy()
         { 
             if (m_Bundle!=null)
             {
                 m_Bundle.Release(); 
-            }
+            } 
             if (LuaScriptMgr.Instance != null)
             {
                 LuaScriptMgr.Instance.SafeRelease(ref m_AwakeFunc);

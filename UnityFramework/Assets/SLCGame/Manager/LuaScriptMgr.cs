@@ -5,6 +5,7 @@ using SLCGame.Tools;
 using LuaInterface;
 using System;
 using SLCGame.Tools.Unity;
+using UnityEngine.UI;
 
 namespace SLCGame.Unity
 {
@@ -13,13 +14,13 @@ namespace SLCGame.Unity
         public LuaState m_Lua;
         private LuaLoader m_Loader;
         public HashSet<string> m_FileList = null;
-        Dictionary<string, LuaFunction> m_FunDic = null;
-          
+        
+
 
         public void Init()
         {
             m_FileList = new HashSet<string>();
-            m_FunDic = new Dictionary<string, LuaFunction>(); 
+            
             m_Lua = new LuaState();
             m_Loader = new LuaLoader(); 
             this.OpenLibs();
@@ -40,7 +41,7 @@ namespace SLCGame.Unity
         /// </summary>
         void OpenLibs()
         {
-            m_Lua.OpenLibs(LuaDLL.luaopen_pb);
+            m_Lua.OpenLibs(LuaDLL.luaopen_pb); 
             //m_Lua.OpenLibs(LuaDLL.luaopen_sproto_core);
             //m_Lua.OpenLibs(LuaDLL.luaopen_protobuf_c);
             m_Lua.OpenLibs(LuaDLL.luaopen_lpeg);
@@ -149,11 +150,7 @@ namespace SLCGame.Unity
 
         public void Destroy()
         {
-            if (m_FunDic == null) return;
-            foreach (KeyValuePair<string, LuaFunction> kv in m_FunDic)
-            {
-                kv.Value.Dispose();
-            } 
+            m_Lua.LuaGC(LuaGCOptions.LUA_GCCOLLECT);
             Debugger.Log("Lua module destroy");
         }
 
@@ -166,50 +163,40 @@ namespace SLCGame.Unity
         {
             if (!m_FileList.Contains(fileName))
             {
+                fileName = fileName.Replace("(Clone)", "");
                 m_FileList.Add(fileName);
-                m_Lua.DoFile(fileName);
+                m_Lua.DoFile(fileName); 
             } 
+        }
+
+        public void DoFile(AssetBundle ab, string fileName)
+        {
+            if (!m_FileList.Contains(fileName))
+            {
+                TextAsset text = ab.LoadAsset<TextAsset>(fileName);
+                m_Lua.LuaDoString(text.text);
+                m_FileList.Add(fileName);
+            }
         }
 
         public LuaFunction GetLuaFunction(string name)
         {
-            LuaFunction func = null;
-            if (m_FunDic.TryGetValue(name, out func))
-            { 
-                func.Call();
-            }
-            else
-            {
-                func = m_Lua.GetFunction(name); 
-            }
-            if (func != null)
-            {
-                func.Call();
-            }
+            LuaFunction func =  m_Lua.GetFunction(name);   
             return func;
         }
 
         /// <summary>
-        /// 不缓存LuaFunction
+        ///  
         /// </summary> 
         public object[] CallLuaFunction(string name, params object[] args)
         {
-            LuaFunction func = null;
-
-            if (m_FunDic.TryGetValue(name, out func))
-            { 
-                return func.Call(args);
-            }
-            else
-            {
-                func = m_Lua.GetFunction(name);
-                m_FunDic.Add(name, func);  
-            }
+            LuaFunction func = m_Lua.GetFunction(name); 
             if (func != null)
             {
                 return func.Call(args);
             }
             return null;
-        } 
+        }
+
     }
 }

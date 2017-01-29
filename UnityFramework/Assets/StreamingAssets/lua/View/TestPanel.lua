@@ -1,23 +1,20 @@
  
 
-local transform;
-local gameObject;
-local TestPanel; 
+local transform
+local gameObject
+local TestPanel
 
-TestPanel = {};
-local this = TestPanel;
+TestPanel = {} 
 
+TestUI = {}
+this = TestUI
+ 
 --启动事件--
-function TestPanel.Awake(obj)
-	gameObject = obj;
-	transform = obj.transform;
-	TestPanel = obj:GetComponent('TestPanel');
-	print("sdfsdddddddddddddddddddddddddddddddddddddddd")
-
-	this.InitPanel();
-	logWarn("Awake lua--->>"..gameObject.name);
+function TestUI.Awake(obj)
+print("s11111111111111111111111111111111111111111111111111111111111111111")
 end
-
+ 
+ 
 local funcOK = function() 
 	this.ShowMsg('OK button clicked.'); 
 end
