@@ -115,7 +115,12 @@ namespace SLCGame.Unity
             }
             CallLuaFunction("GMMsg", str);
         }
-         
+
+        public object[] CallMethod(string func, params object[] args)
+        {
+            return CallLuaFunction(func, args);
+        }
+
         /// <summary>
         /// 调用方法
         /// </summary>

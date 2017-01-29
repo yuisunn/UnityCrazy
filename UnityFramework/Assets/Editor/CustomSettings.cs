@@ -67,8 +67,20 @@ public static class CustomSettings
      _GT(typeof(Graphic)),
      _GT(typeof(UIBehaviour)),
      _GT(typeof(Image)),
-     _GT(typeof(SpriteRenderer)), 
- 
+     _GT(typeof(SpriteRenderer)),
+     _GT(typeof(ToggleGroup)),
+     _GT(typeof(Toggle)),
+     _GT(typeof(Toggle.ToggleEvent)),
+     _GT(typeof(ScrollRect)),
+     _GT(typeof(UIGrid)),
+     _GT(typeof(InputField)),
+     _GT(typeof(Dropdown)),
+     _GT(typeof(Dropdown.DropdownEvent)),
+     _GT(typeof(Slider)),
+     _GT(typeof(Slider.SliderEvent)),
+     _GT(typeof(PointerEventData)),
+     _GT(typeof(BaseEventData)),
+     
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),
         _GT(typeof(DG.Tweening.Tween)).SetBaseType(typeof(System.Object)).AddExtendType(typeof(DG.Tweening.TweenExtensions)),
