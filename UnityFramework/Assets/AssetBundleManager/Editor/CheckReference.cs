@@ -20,8 +20,11 @@ namespace AssetBundles
         }
     }
 
-    class PackCache
+    public class PackCache
     {
+        public string m_MD5;
+        public string m_Size;
+        public int m_Ver;
         public string m_Name;
         public List<string> m_RefPacks;
         public PackCache(string name)

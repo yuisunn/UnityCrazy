@@ -8,6 +8,7 @@ using System.IO;
 
 namespace SLCGame.Unity
 {
+
     public class BundleCache
     {
         AssetBundle m_AssetBundle;
