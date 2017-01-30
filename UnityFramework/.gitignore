@@ -7,4 +7,6 @@ UnityFramework.Editor.csproj
 UnityFramework.Plugins.csproj
 UnityFramework.sln
 UnityFramework.userprefs
-.vs/
+.vs/ 
+# È¡ÏûdllºöÂÔ
+!Assets\Plugins\*.dll
