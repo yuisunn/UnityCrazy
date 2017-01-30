@@ -56,6 +56,7 @@ public static class CustomSettings
         _GT(typeof(Debugger)).SetNameSpace(null),
 
 //ugui
+     _GT(typeof(UnityEngine.Object)),
      _GT(typeof(Resources)),
      _GT(typeof(Button)),
      _GT(typeof(Button.ButtonClickedEvent)),
@@ -76,6 +77,7 @@ public static class CustomSettings
      _GT(typeof(InputField)),
      _GT(typeof(Dropdown)),
      _GT(typeof(Dropdown.DropdownEvent)),
+     _GT(typeof(Dropdown.OptionData)),
      _GT(typeof(Slider)),
      _GT(typeof(Slider.SliderEvent)),
      _GT(typeof(PointerEventData)),

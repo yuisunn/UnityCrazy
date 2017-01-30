@@ -190,6 +190,20 @@ namespace SLCGame.Unity
             return func;
         }
 
+        public void TestPush(string name, params object[] args)
+        {
+            LuaFunction func = m_Lua.GetFunction(name);
+            if (func != null)
+            {
+                func.BeginPCall();
+                func.PushObject(args[0]);
+                func.PushObject(args[1]);
+                func.PCall();
+                func.EndPCall();
+
+            } 
+        }
+
         /// <summary>
         ///  
         /// </summary> 
@@ -199,6 +213,7 @@ namespace SLCGame.Unity
             if (func != null)
             {
                 return func.Call(args);
+                
             }
             return null;
         }

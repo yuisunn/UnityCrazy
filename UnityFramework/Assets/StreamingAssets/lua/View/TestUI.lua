@@ -23,6 +23,8 @@ end
 
 function TestUI.DropClick(i)
 	this.input.text =  i
+
+	local list = {};
 end
 
 function TestUI.Slider(f)
@@ -30,9 +32,10 @@ function TestUI.Slider(f)
 end
 
 function CreatePrefab(parent,prefab)
-	local obj = GameObject.Instantiate(prefab)
+	local obj = UnityEngine.GameObject.Instantiate(prefab) --静态方法不需要穿self 所以不需要用：
 	obj.name = "new Obj"
-	obj.transform.parent = parent.transform;
+	obj.transform.parent = this.slider.transform;
+	--obj.gameObject:AddComponent("LuaBehaviour");
 end
 
 

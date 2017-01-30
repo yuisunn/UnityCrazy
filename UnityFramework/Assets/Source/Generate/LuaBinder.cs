@@ -74,6 +74,7 @@ public static class LuaBinder
 		L.EndModule();
 		L.BeginModule("Dropdown");
 		UnityEngine_UI_Dropdown_DropdownEventWrap.Register(L);
+		UnityEngine_UI_Dropdown_OptionDataWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("Slider");
 		UnityEngine_UI_Slider_SliderEventWrap.Register(L);

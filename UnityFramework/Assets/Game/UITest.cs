@@ -16,22 +16,22 @@ public class UITest : MonoBehaviour {
         //AssetBundle ab = AssetBundle.LoadFromFile(PathMod.DataPath + "/cube-bundle");  
         GameObject bb = Instantiate(pre); 
         bb.transform.parent = this.transform; 
-        LuaBehaviour tt = bb.AddComponent<LuaBehaviour>();
-        tt.OnInit(); 
+        LuaBehaviour tt = bb.AddComponent<LuaBehaviour>(); 
         //bb.GetComponentInChildren<ToggleGroup>().SetAllTogglesOff();
-        Dropdown obj1 = bb.GetComponentInChildren<Dropdown>(); 
+        Dropdown obj1 = bb.GetComponentInChildren<Dropdown>();  
         Slider s = bb.GetComponentInChildren<Slider>();  
         //obj1.onValueChanged.AddListener(CLick);
-        //LuaScriptMgr.Instance.CallMethod("CreatePrefab", this.gameObject, item);
+      
+
         //Image btn = tt.GetComponentInChildren<Image>();
         //btn.sprite = loadSprite("1");    
-        //Button btn = this.GetComponentInChildren<Button>();
-        //btn.onClick.AddListener(CLick);
+        Button btn = this.GetComponentInChildren<Button>();
+        btn.onClick.AddListener(CLick);
     }
 
-    public void CLick(bool d)
-    {
-
+    public void CLick()
+    { 
+        LuaScriptMgr.Instance.TestPush("CreatePrefab", this.gameObject, (UnityEngine.GameObject)item);
     }
     private Sprite loadSprite(string spriteName)
     {
