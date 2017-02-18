@@ -89,11 +89,7 @@ namespace SLCGame.Tools.Unity
             return t;
         }
 
-        public static void AddChild(GameObject parent, GameObject child)
-        {
-            child.transform.parent = parent.transform;
-
-        }
+ 
          
 
         public static void AddChild(Object parent, Object child, bool usechildoriginaltransform = false)

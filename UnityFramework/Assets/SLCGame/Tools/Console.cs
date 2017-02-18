@@ -15,6 +15,7 @@ namespace SLCGame.Unity
 {
     public class Console : MonoBehaviour
     {
+        
         public float width = 360;//窗口的宽
         public float height = 640;//窗口的高
         //定义标准屏幕分辨率

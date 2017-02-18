@@ -975,12 +975,28 @@ public class UnityEngine_MaterialWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 3);
-			UnityEngine.Material obj = (UnityEngine.Material)ToLua.CheckObject(L, 1, typeof(UnityEngine.Material));
-			string arg0 = ToLua.CheckString(L, 2);
-			UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)ToLua.CheckObject(L, 3, typeof(UnityEngine.ComputeBuffer));
-			obj.SetBuffer(arg0, arg1);
-			return 0;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 3 && TypeChecker.CheckTypes(L, 1, typeof(UnityEngine.Material), typeof(int), typeof(UnityEngine.ComputeBuffer)))
+			{
+				UnityEngine.Material obj = (UnityEngine.Material)ToLua.ToObject(L, 1);
+				int arg0 = (int)LuaDLL.lua_tonumber(L, 2);
+				UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)ToLua.ToObject(L, 3);
+				obj.SetBuffer(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes(L, 1, typeof(UnityEngine.Material), typeof(string), typeof(UnityEngine.ComputeBuffer)))
+			{
+				UnityEngine.Material obj = (UnityEngine.Material)ToLua.ToObject(L, 1);
+				string arg0 = ToLua.ToString(L, 2);
+				UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)ToLua.ToObject(L, 3);
+				obj.SetBuffer(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.Material.SetBuffer");
+			}
 		}
 		catch(Exception e)
 		{

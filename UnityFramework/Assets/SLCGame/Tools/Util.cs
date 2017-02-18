@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using LuaInterface;
 using SLCGame.Unity;
+using System.Runtime.Serialization.Formatters.Binary;
 //using SimpleFramework.Manager;
 
 #if UNITY_EDITOR
@@ -19,6 +20,19 @@ namespace SLCGame.Tools
 {
     public class Util
     {
+        /// <summary>
+        /// 深度复制 
+        /// </summary>
+        public static T DeepClone<T>(T t)
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, t);//把对象序列化到内存流 这样所有引用对象都被保存在内存中 循环引用会被自动处理
+            stream.Position = 0;
+            object obj = formatter.Deserialize(stream);//反序列化导出对像
+            return (T)obj;
+        }
+
         private static List<string> luaPaths = new List<string>();
 
         public static int Int(object o)
